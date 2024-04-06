@@ -1,0 +1,77 @@
+:root {
+  --Gray: #60676d;
+  --dark: #313131;
+  --Gray-1: #f5f5f5;
+  --t-border: #e7e7e7;
+  --Green: #08705f;
+  --main-white: #fff;
+}
+@font-face {
+  font-family: 'GothamProLight';
+  src: url('./assets/fonts/GothaProLig.otf');
+}
+@font-face {
+  font-family: 'GothamProRegular';
+  src: url('./assets/fonts/GothaProReg.otf');
+}
+@font-face {
+  font-family: 'GothamProMedium';
+  src: url('./assets/fonts/GothaProMed.otf');
+}
+@font-face {
+  font-family: 'GothamProBold';
+  src: url('./assets/fonts/GothaProBol.otf');
+}
+
+.custom-marker {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  font-weight: bold;
+  color: #fff;
+  width: 28px !important;
+  height: 28px !important;
+}
+.custom-marker.finish {
+  background-color: rgb(255, 255, 255);
+  border-color: #000000;
+  color: #000000;
+}
+
+.custom-marker.p {
+  background-color: rgb(0, 115, 255);
+  border: 1px solid #000000;
+  color: #ffffff;
+  font-weight: normal;
+  width: 20px !important;
+  height: 20px !important;
+}
+.leaflet-bar {
+  border: none !important;
+  border-radius: 8px;
+  font-size: 10px;
+}
+
+.leaflet-control-zoom-in {
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+.leaflet-control-zoom-out {
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+.leaflet-draw-toolbar a {
+  border-radius: 8px !important;
+}
+.leaflet-editing-icon {
+  margin-left: -5px !important;
+  margin-top: -5px !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50%;
+  background-color: #000;
+  border: 1px solid #fff;
+}

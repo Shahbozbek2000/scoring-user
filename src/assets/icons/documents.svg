@@ -1,0 +1,31 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2092_1582)">
+<mask id="mask0_2092_1582" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+<path d="M0 3.8147e-06H64V64H0V3.8147e-06Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_2092_1582)">
+<path d="M40.25 8.75V1.25H1.25V54.5H9.5" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path d="M19.5 8.75V18.75H9.5" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 29.5H29" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 34.5H25.25" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 39.5H25.25" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 44.5H25.25" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 49.5H29" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<mask id="mask1_2092_1582" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+<path d="M0 3.8147e-06H64V64H0V3.8147e-06Z" fill="white"/>
+</mask>
+<g mask="url(#mask1_2092_1582)">
+<path d="M62.75 39.5C62.75 45.21 59.5587 50.175 54.8625 52.71C52.7462 53.8513 50.3238 54.5 47.75 54.5C39.4663 54.5 32.75 47.7837 32.75 39.5C32.75 31.2163 39.4663 24.5 47.75 24.5C56.0337 24.5 62.75 31.2163 62.75 39.5Z" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M62.75 39.5H47.75L54.8625 52.71" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31.5 62.75C31.5 63.4404 30.9402 64 30.25 64C29.5596 64 29 63.4404 29 62.75C29 62.0596 29.5596 61.5 30.25 61.5C30.9402 61.5 31.5 62.0596 31.5 62.75Z" fill="#004646"/>
+<path d="M47.75 39.5V8.75H19.5L9.5 18.75V62.75H24.625" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M35.875 62.75H47.75V54.5" stroke="#004646" stroke-width="2.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_2092_1582">
+<rect width="64" height="64" fill="white"/>
+</clipPath>
+</defs>
+</svg>
