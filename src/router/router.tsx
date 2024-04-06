@@ -3,7 +3,6 @@ import { ROUTER } from '@/constants/router'
 import Layout from '@/layout'
 import { createBrowserRouter } from 'react-router-dom'
 
-const Auth = lazy(async () => await import('@/pages/auth'))
 const NotFound = lazy(async () => await import('@/pages/404'))
 const Home = lazy(async () => await import('@/pages/dashboard/home'))
 const Apply = lazy(async () => await import('@/pages/dashboard/apply'))
@@ -20,14 +19,16 @@ const Documents = lazy(async () => await import('@/pages/dashboard/documents'))
 const Polis = lazy(async () => await import('@/pages/dashboard/documents/polis'))
 const TechnicalSupport = lazy(async () => await import('@/pages/dashboard/technical-support'))
 
+const Landing = lazy(async () => await import('@/pages/landing'))
+
 export const router = createBrowserRouter([
   {
-    path: ROUTER.AUTH,
+    path: ROUTER.LANDING,
     element: <Layout />,
     children: [
       {
         index: true,
-        element: <Auth />,
+        element: <Landing />,
       },
       {
         path: ROUTER.HOME,

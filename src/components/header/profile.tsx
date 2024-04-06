@@ -19,7 +19,7 @@ export const Profile = () => {
 
   const handleLogout = () => {
     localStorage.clear()
-    window.location.href = ROUTER.AUTH
+    window.location.href = ROUTER.LANDING
     // navigate(ROUTER.AUTH)
     setAnchorEl(null)
   }
