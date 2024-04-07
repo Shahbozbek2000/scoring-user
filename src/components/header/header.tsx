@@ -32,7 +32,7 @@ export const Header = () => {
     >
       <Container>
         <Stack direction='row' width='100%' justifyContent='space-between' alignItems='center'>
-          <Link to={ROUTER.HOME}>
+          <Link to={ROUTER.LANDING}>
             <Logo />
           </Link>
           {user && <Profile />}

@@ -10,6 +10,7 @@ const Contracts = lazy(async () => await import('@/pages/dashboard/contracts'))
 const PaymentStatus = lazy(async () => await import('@/pages/dashboard/payment-status'))
 const TechnicalSupport = lazy(async () => await import('@/pages/dashboard/technical-support'))
 const Documents = lazy(async () => await import('@/pages/dashboard/documents'))
+const PersonalInformation = lazy(async () => await import('@/pages/dashboard/personal-information'))
 
 const Landing = lazy(async () => await import('@/pages/landing'))
 
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
           {
             index: true,
             element: <Home />,
+          },
+          {
+            path: ROUTER.PERSONAL_INFORMATION,
+            element: <PersonalInformation />,
           },
           {
             path: ROUTER.APPLY,

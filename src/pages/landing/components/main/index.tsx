@@ -3,8 +3,12 @@ import { CustomBox, Wrapper } from './style'
 import { Image } from '@/components/image'
 import mainBg from '@/assets/images/main-bg.png'
 import { ReactComponent as IconCircle } from '@/assets/icons/ellipse.svg'
+import { useNavigate } from 'react-router-dom'
+import { ROUTER } from '@/constants/router'
 
 export const Main = () => {
+  const navigate = useNavigate()
+
   return (
     <Stack width='100%' sx={{ paddingTop: '42px' }}>
       <Wrapper>
@@ -16,7 +20,13 @@ export const Main = () => {
           <Typography sx={{ color: '#fff', fontFamily: 'GothamProRegular', fontSize: 16 }}>
             Skoring <IconCircle /> Sug’urta
           </Typography>
-          <Button variant='outlined' className='apply-btn'>
+          <Button
+            variant='outlined'
+            className='apply-btn'
+            onClick={() => {
+              navigate(ROUTER.HOME)
+            }}
+          >
             Online ariza berish
           </Button>
         </CustomBox>

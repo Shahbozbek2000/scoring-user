@@ -2,6 +2,7 @@ export const ROUTER = {
   LANDING: '/',
   HOME: '/main',
   NOT_FOUND: '*',
+  PERSONAL_INFORMATION: 'personal-information',
   APPLY: 'apply',
   CONTRACTS: 'contracts',
   COVERAGE_INSURANCE: 'coverage-insurance',
