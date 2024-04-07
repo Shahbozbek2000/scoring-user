@@ -7,12 +7,12 @@ import { ReactComponent as IconSeparatedInsurance } from '@/assets/icons/separat
 
 export const Statistics = () => {
   return (
-    <Stack sx={{ padding: '64px 0' }}>
+    <Stack>
       <Typography sx={{ color: '#313131', fontFamily: 'GothamProMedium', fontSize: 28 }}>
         Statistika
       </Typography>
       <Grid container spacing={{ xs: 2, md: 3 }}>
-        <Grid item xs={6} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card>
             <IconDocument />
             <Info>
@@ -21,7 +21,7 @@ export const Statistics = () => {
             </Info>
           </Card>
         </Grid>
-        <Grid item xs={6} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card>
             <IconApplyCount />
             <Info>
@@ -30,7 +30,7 @@ export const Statistics = () => {
             </Info>
           </Card>
         </Grid>
-        <Grid item xs={6} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card>
             <IconRejectedApplyCount />
             <Info>
@@ -39,7 +39,7 @@ export const Statistics = () => {
             </Info>
           </Card>
         </Grid>
-        <Grid item xs={6} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card>
             <IconSeparatedInsurance />
             <Info>
