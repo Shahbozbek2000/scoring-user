@@ -7,17 +7,9 @@ const NotFound = lazy(async () => await import('@/pages/404'))
 const Home = lazy(async () => await import('@/pages/dashboard/home'))
 const Apply = lazy(async () => await import('@/pages/dashboard/apply'))
 const Contracts = lazy(async () => await import('@/pages/dashboard/contracts'))
-const CoverageInsurance = lazy(
-  async () => await import('@/pages/dashboard/contracts/coverage-insurance'),
-)
-const CreateCoverageInsurance = lazy(
-  async () => await import('@/pages/dashboard/contracts/coverage-insurance/create'),
-)
-const CropInsurance = lazy(async () => await import('@/pages/dashboard/contracts/crop-insurance'))
 const PaymentStatus = lazy(async () => await import('@/pages/dashboard/payment-status'))
-const Documents = lazy(async () => await import('@/pages/dashboard/documents'))
-const Polis = lazy(async () => await import('@/pages/dashboard/documents/polis'))
 const TechnicalSupport = lazy(async () => await import('@/pages/dashboard/technical-support'))
+const Documents = lazy(async () => await import('@/pages/dashboard/documents'))
 
 const Landing = lazy(async () => await import('@/pages/landing'))
 
@@ -43,29 +35,7 @@ export const router = createBrowserRouter([
           },
           {
             path: ROUTER.CONTRACTS,
-            children: [
-              {
-                index: true,
-                element: <Contracts />,
-              },
-              {
-                path: ROUTER.COVERAGE_INSURANCE,
-                children: [
-                  {
-                    index: true,
-                    element: <CoverageInsurance />,
-                  },
-                  {
-                    path: `${ROUTER.CREATE}/:id`,
-                    element: <CreateCoverageInsurance />,
-                  },
-                ],
-              },
-              {
-                path: ROUTER.CROP_INSURANCE,
-                element: <CropInsurance />,
-              },
-            ],
+            element: <Contracts />,
           },
           {
             path: ROUTER.PAYMENT_STATUS,
@@ -73,16 +43,7 @@ export const router = createBrowserRouter([
           },
           {
             path: ROUTER.DOCUMENTS,
-            children: [
-              {
-                index: true,
-                element: <Documents />,
-              },
-              {
-                path: ROUTER.POLIS,
-                element: <Polis />,
-              },
-            ],
+            element: <Documents />,
           },
           {
             path: ROUTER.TECHNICAL_SUPPORT,
