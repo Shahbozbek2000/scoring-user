@@ -1,27 +1,19 @@
-export const filter = [
+import { ReactComponent as IconApply } from '@/assets/icons/apply.svg'
+import { ReactComponent as IconContracts } from '@/assets/icons/contracts.svg'
+
+export const pages = [
   {
-    value: 'apply_status',
-    label: 'Ariza statusi',
+    id: 1,
+    name: 'Kreditni qoplash sug’urtasi',
+    Icon: IconApply,
+    link: 'coverage-insurance',
+    disabled: true,
   },
   {
-    value: 'company_name',
-    label: 'Korxona nomi',
-  },
-  {
-    value: 'region',
-    label: 'Viloyat',
-  },
-  {
-    value: 'district',
-    label: 'Tuman',
-  },
-  {
-    value: 'type',
-    // eslint-disable-next-line quotes
-    label: "Sug'urta turi",
-  },
-  {
-    value: 'apply_date',
-    label: 'Ariza sanasi',
+    id: 2,
+    name: 'Xosil sug’urtasi',
+    Icon: IconContracts,
+    link: 'crop-insurance',
+    disabled: false,
   },
 ]
