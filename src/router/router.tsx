@@ -2,6 +2,7 @@ import { lazy } from 'react'
 import { ROUTER } from '@/constants/router'
 import Layout from '@/layout'
 import { createBrowserRouter } from 'react-router-dom'
+import CreateCropInsurance from '@/pages/dashboard/apply/crop-insurance/create'
 
 const NotFound = lazy(async () => await import('@/pages/404'))
 const Home = lazy(async () => await import('@/pages/dashboard/home'))
@@ -47,7 +48,16 @@ export const router = createBrowserRouter([
               },
               {
                 path: ROUTER.CROP_INSURANCE,
-                element: <CropInsurance />,
+                children: [
+                  {
+                    index: true,
+                    element: <CropInsurance />,
+                  },
+                  {
+                    path: ROUTER.CREATE,
+                    element: <CreateCropInsurance />,
+                  },
+                ],
               },
               {
                 path: ROUTER.COVERAGE_INSURANCE,
