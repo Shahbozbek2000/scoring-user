@@ -5,7 +5,7 @@ import { ReactComponent as IconTechnicSupport } from '@/assets/icons/technical-s
 import { ReactComponent as IconDocuments } from '@/assets/icons/documents.svg'
 
 export const pages = [
-  { id: 1, name: 'Videoqo`llanma', Icon: IconApply, link: 'apply', disabled: false },
+  { id: 1, name: 'Videoqo`llanma', Icon: IconApply, link: 'video-instruction', disabled: false },
   {
     id: 2,
     name: 'Shaxsiy ma`lumotlar',

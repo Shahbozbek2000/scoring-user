@@ -16,6 +16,7 @@ const CropInsurance = lazy(async () => await import('@/pages/dashboard/apply/cro
 const CoverageInsurance = lazy(
   async () => await import('@/pages/dashboard/apply/coverage-insurance'),
 )
+const VideoInstruction = lazy(async () => await import('@/pages/dashboard/video-instruction'))
 
 const Landing = lazy(async () => await import('@/pages/landing'))
 
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTER.TECHNICAL_SUPPORT,
             element: <TechnicalSupport />,
+          },
+          {
+            path: ROUTER.VIDEO_INSTRUCTION,
+            element: <VideoInstruction />,
           },
         ],
       },

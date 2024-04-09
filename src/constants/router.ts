@@ -12,4 +12,5 @@ export const ROUTER = {
   DOCUMENTS: 'documents',
   POLIS: 'polis',
   TECHNICAL_SUPPORT: 'technical-support',
+  VIDEO_INSTRUCTION: 'video-instruction',
 }
