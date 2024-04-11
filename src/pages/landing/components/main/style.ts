@@ -18,6 +18,10 @@ export const CustomBox = styled(Box)`
     color: #fff;
     width: 191px;
     margin-top: 24px;
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
   }
   @media (max-width: 992px) {
     .main-title {

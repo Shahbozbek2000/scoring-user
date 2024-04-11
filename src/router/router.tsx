@@ -2,7 +2,6 @@ import { lazy } from 'react'
 import { ROUTER } from '@/constants/router'
 import Layout from '@/layout'
 import { createBrowserRouter } from 'react-router-dom'
-import CreateCropInsurance from '@/pages/dashboard/apply/crop-insurance/create'
 
 const NotFound = lazy(async () => await import('@/pages/404'))
 const Home = lazy(async () => await import('@/pages/dashboard/home'))
@@ -16,7 +15,16 @@ const CropInsurance = lazy(async () => await import('@/pages/dashboard/apply/cro
 const CoverageInsurance = lazy(
   async () => await import('@/pages/dashboard/apply/coverage-insurance'),
 )
+const CreateCropInsurance = lazy(
+  async () => await import('@/pages/dashboard/apply/crop-insurance/create'),
+)
 const VideoInstruction = lazy(async () => await import('@/pages/dashboard/video-instruction'))
+const ContractCoverageInsurance = lazy(
+  async () => await import('@/pages/dashboard/contracts/coverage-insurance'),
+)
+const ContractCropInsurance = lazy(
+  async () => await import('@/pages/dashboard/contracts/crop-insurance'),
+)
 
 const Landing = lazy(async () => await import('@/pages/landing'))
 
@@ -68,7 +76,20 @@ export const router = createBrowserRouter([
           },
           {
             path: ROUTER.CONTRACTS,
-            element: <Contracts />,
+            children: [
+              {
+                index: true,
+                element: <Contracts />,
+              },
+              {
+                path: ROUTER.COVERAGE_INSURANCE,
+                element: <ContractCoverageInsurance />,
+              },
+              {
+                path: ROUTER.CROP_INSURANCE,
+                element: <ContractCropInsurance />,
+              },
+            ],
           },
           {
             path: ROUTER.PAYMENT_STATUS,
