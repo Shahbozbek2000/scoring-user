@@ -32,10 +32,10 @@ export default defineConfig({
       overlay: true,
       typescript: true,
     }),
-    eslint({
-      cache: false,
-      include: ['./src/**/*.tsx', './src/**/*.ts'],
-    }),
+    // eslint({
+    //   cache: false,
+    //   include: ['./src/**/*.tsx', './src/**/*.ts'],
+    // }),
     Unfonts({
       custom: {
         families: [
