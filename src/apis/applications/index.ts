@@ -13,6 +13,10 @@ export const getAllApplications = async (params: IParams) => {
   })
 }
 
+export const createApplications = async <T>(payload: T) => {
+  return await request.post('/application/new', payload)
+}
+
 export const getByIDApplications = async <T>(id: T) => {
   return await request(`/application/get/${id}`)
 }

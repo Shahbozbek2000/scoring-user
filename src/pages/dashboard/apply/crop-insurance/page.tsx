@@ -5,7 +5,7 @@ import { usePage } from './usePage'
 import { CustomPagination } from '@/components/pagination'
 
 const CropInsurance = () => {
-  const { data, params, columns, setParams, isLoading } = usePage()
+  const { data, params, columns, setParams } = usePage()
   return (
     <Stack>
       <Typography
