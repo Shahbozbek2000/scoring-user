@@ -4,6 +4,7 @@ import { formSchema } from './form.schema'
 import { useMutation } from '@tanstack/react-query'
 import { login } from '@/apis/login'
 import { ROUTER } from '@/constants/router'
+import { useNavigate } from 'react-router-dom'
 
 interface FormValues {
   login: string
@@ -11,6 +12,7 @@ interface FormValues {
 }
 
 export const useLogin = () => {
+  const navigate = useNavigate()
   const form = useForm<FormValues>({
     resolver: yupResolver(formSchema),
   })
@@ -20,8 +22,8 @@ export const useLogin = () => {
     onSuccess: res => {
       localStorage.setItem('token', res?.data?.token)
       sessionStorage.setItem('token', res?.data?.token)
-      // navigate(ROUTER.HOME)
-      window.location.href = ROUTER.HOME
+      navigate(ROUTER.HOME)
+      // window.location.href = ROUTER.HOME
     },
     onError: () => {},
   })

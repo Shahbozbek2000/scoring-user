@@ -4,6 +4,9 @@ import { Badge } from '@/styles/global'
 import { Button } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
+import { getAllApplications } from '@/apis/applications'
 
 interface IColumns {
   number: number
@@ -27,6 +30,26 @@ export const usePage = () => {
     page: initial_params.has('page') ? Number(initial_params.get('page')) : 1,
     limit: initial_params.has('limit') ? Number(initial_params.get('limit')) : 10,
   })
+
+  const {
+    data = {
+      count: 0,
+      results: [],
+    },
+    isLoading,
+  } = useQuery({
+    queryKey: [REACT_QUERY_KEYS.GET_ALL_APPLICATIONS, params],
+    queryFn: async () => await getAllApplications(params),
+    select: res => {
+      return {
+        count: res?.data?.count,
+        results: res?.data?.result,
+      }
+    },
+    keepPreviousData: true,
+  })
+
+  console.log(data, 'data')
 
   const columns = [
     columnHelper.accessor('number', {
@@ -107,35 +130,11 @@ export const usePage = () => {
     }),
   ]
 
-  const data: IColumns[] = [
-    {
-      number: 1,
-      apply_number: '24022024',
-      status_name: "Ro'yxatdan o'tdi",
-      status_code: true,
-      farmer_name: 'MCHJ',
-      type_name: 'Xosil sug’urta',
-      date: '24.02.2024',
-      region: 'Toshkent sh.',
-      district: 'Yunusobod',
-    },
-    {
-      number: 2,
-      apply_number: '24022024',
-      status_name: 'Bekor qilingan',
-      status_code: false,
-      farmer_name: 'MCHJ',
-      type_name: 'Xosil sug’urta',
-      date: '24.02.2024',
-      region: 'Samarqand',
-      district: 'Qibray',
-    },
-  ]
-
   return {
-    data,
+    data: data.results,
     params,
     columns,
     setParams,
+    isLoading,
   }
 }

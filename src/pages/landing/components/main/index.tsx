@@ -5,9 +5,21 @@ import mainBg from '@/assets/images/main-bg.png'
 import { ReactComponent as IconCircle } from '@/assets/icons/ellipse.svg'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER } from '@/constants/router'
+import { getUser } from '@/utils/user'
 
 export const Main = () => {
+  const user = getUser()
   const navigate = useNavigate()
+
+  console.log(user, 'user')
+
+  const handleNavigate = () => {
+    if (user === null) {
+      navigate(ROUTER.AUTH)
+    } else {
+      navigate(ROUTER.HOME)
+    }
+  }
 
   return (
     <Stack width='100%' sx={{ paddingTop: '42px' }}>
@@ -24,7 +36,7 @@ export const Main = () => {
             variant='outlined'
             className='apply-btn'
             onClick={() => {
-              navigate(ROUTER.HOME)
+              handleNavigate()
             }}
           >
             Online ariza berish

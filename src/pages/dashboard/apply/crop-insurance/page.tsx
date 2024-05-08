@@ -5,7 +5,7 @@ import { usePage } from './usePage'
 import { CustomPagination } from '@/components/pagination'
 
 const CropInsurance = () => {
-  const { data, params, columns, setParams } = usePage()
+  const { data, params, columns, setParams, isLoading } = usePage()
   return (
     <Stack>
       <Typography
@@ -28,7 +28,9 @@ const CropInsurance = () => {
           bgcolor={theme => theme.palette.allColors.WHITE}
         >
           <CustomTable options={{ data, columns }} emptyTitle="Ma'lumot mavjud emas!" />
-          <CustomPagination params={params} setParams={setParams} count={1} />
+          {data.length > 0 && (
+            <CustomPagination params={params} setParams={setParams} count={data.length} />
+          )}
         </Stack>
       </Stack>
     </Stack>

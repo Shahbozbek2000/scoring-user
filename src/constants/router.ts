@@ -1,6 +1,7 @@
 export const ROUTER = {
   LANDING: '/',
   HOME: '/main',
+  AUTH: '/auth',
   NOT_FOUND: '*',
   PERSONAL_INFORMATION: 'personal-information',
   APPLY: 'apply',
