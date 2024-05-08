@@ -8,14 +8,11 @@ import { Button, Grid, Stack, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { LoadingOverlay } from '@/components/loading-overlay'
 import { Form } from 'react-router-dom'
+import { useCreate } from './useCreate'
 
 const CreateCropInsurance = () => {
-  const form = useForm()
   const [isCanceled, setIsCanceled] = useState(false)
-
-  const onReject = (data: any) => {
-    console.log(data)
-  }
+  const { form, isLoading, onCreate } = useCreate()
 
   return (
     <Stack
@@ -35,7 +32,7 @@ const CreateCropInsurance = () => {
       >
         Xosil sug’urtasi bo’yicha arizalar
       </Typography>
-      <Form onSubmit={form.handleSubmit(onReject)}>
+      <Form onSubmit={form.handleSubmit(onCreate)}>
         <Grid container spacing={{ xs: 2, md: 2 }}>
           <Grid item xs={6} sm={4} md={4}>
             <Input
@@ -43,44 +40,17 @@ const CreateCropInsurance = () => {
               name='number'
               placeholder='Ariza raqami'
               label='Ariza raqami'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
-            <Input
-              control={form.control}
-              name='date'
-              placeholder='Sana'
-              label='Sana'
-              InputProps={{
-                readOnly: true,
-              }}
-            />
+            <Input control={form.control} name='date' placeholder='Sana' label='Sana' />
           </Grid>
           <Grid item xs={6} sm={4} md={4} />
           <Grid item xs={6} sm={4} md={4}>
-            <Input
-              control={form.control}
-              name='region'
-              placeholder='Viloyat'
-              label='Viloyat'
-              InputProps={{
-                readOnly: true,
-              }}
-            />
+            <Input control={form.control} name='region' placeholder='Viloyat' label='Viloyat' />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
-            <Input
-              control={form.control}
-              name='district'
-              placeholder='Tuman'
-              label='Tuman'
-              InputProps={{
-                readOnly: true,
-              }}
-            />
+            <Input control={form.control} name='district' placeholder='Tuman' label='Tuman' />
           </Grid>
         </Grid>
         <Typography
@@ -100,9 +70,6 @@ const CreateCropInsurance = () => {
               name='farmer_name'
               placeholder='To`liq nomi'
               label='To`liq nomi'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -111,9 +78,6 @@ const CreateCropInsurance = () => {
               name='farmer_stir'
               placeholder='STIR raqami'
               label='STIR raqami'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -122,9 +86,6 @@ const CreateCropInsurance = () => {
               name='farmer_requisites'
               placeholder='Bank rekvizitlari'
               label='Bank rekvizitlari'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -133,9 +94,6 @@ const CreateCropInsurance = () => {
               name='creditor_address'
               placeholder='Yuridik manzili'
               label='Yuridik manzili'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
         </Grid>
@@ -156,9 +114,6 @@ const CreateCropInsurance = () => {
               name='creditor_name'
               placeholder='To`liq nomi'
               label='To`liq nomi'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -167,9 +122,6 @@ const CreateCropInsurance = () => {
               name='creditor_stir'
               placeholder='STIR raqami'
               label='STIR raqami'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -178,9 +130,6 @@ const CreateCropInsurance = () => {
               name='creditor_requisites'
               placeholder='Bank rekvizitlari'
               label='Bank rekvizitlari'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -189,9 +138,6 @@ const CreateCropInsurance = () => {
               name='creditor_address'
               placeholder='Yuridik manzili'
               label='Yuridik manzili'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
         </Grid>
@@ -212,9 +158,6 @@ const CreateCropInsurance = () => {
               name='crop_name'
               placeholder='Q/x ekini nomi'
               label='Q/x ekini nomi'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -223,9 +166,6 @@ const CreateCropInsurance = () => {
               name='crop_area'
               placeholder='Ekin (ko‘chat) maydoni, ga'
               label='Ekin (ko‘chat) maydoni, ga'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -234,9 +174,6 @@ const CreateCropInsurance = () => {
               name='crop_fertility_norm'
               placeholder='Me’yoriy hosildorlik, s/ga'
               label='Me’yoriy hosildorlik, s/ga'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -245,9 +182,6 @@ const CreateCropInsurance = () => {
               name='crop_price'
               placeholder='Hosilni 1 tn narxi, so‘m'
               label='Hosilni 1 tn narxi, so‘m'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -256,9 +190,7 @@ const CreateCropInsurance = () => {
               name='crop_actual_harvest'
               placeholder='Yalpi hosil, tn'
               label='Yalpi hosil, tn'
-              InputProps={{
-                readOnly: true,
-              }}
+              type='number'
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -267,9 +199,6 @@ const CreateCropInsurance = () => {
               name='legal_location2'
               placeholder='Terim-yig‘im muddati'
               label='Terim-yig‘im muddati'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -278,9 +207,6 @@ const CreateCropInsurance = () => {
               name='crop_harvest_start'
               placeholder='Boshlash sanasi'
               label='Boshlash sanasi'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -289,9 +215,6 @@ const CreateCropInsurance = () => {
               name='crop_harvest_end'
               placeholder='Yakunlash sanasi'
               label='Yakunlash sanasi'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
         </Grid>
@@ -312,9 +235,6 @@ const CreateCropInsurance = () => {
               name='credit_area_region_code'
               placeholder='Viloyat'
               label='Viloyat'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -323,9 +243,6 @@ const CreateCropInsurance = () => {
               name='credit_area_district_code'
               placeholder='Tuman'
               label='Tuman'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -334,9 +251,6 @@ const CreateCropInsurance = () => {
               name='credit_area_massiv_code'
               placeholder='Hudud (massiv)'
               label='Hudud (massiv)'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -345,9 +259,6 @@ const CreateCropInsurance = () => {
               name='credit_area_contour_numbers'
               placeholder='Kontur raqamlari'
               label='Kontur raqamlari'
-              InputProps={{
-                readOnly: true,
-              }}
             />
           </Grid>
         </Grid>
@@ -467,7 +378,6 @@ const CreateCropInsurance = () => {
                 borderRadius: '8px',
                 border: `1.5px solid ${COLORS.RED} !important`,
               }}
-              type='submit'
             >
               Rad etish
             </Button>
@@ -485,7 +395,7 @@ const CreateCropInsurance = () => {
             </Button>
           )}
 
-          <Button variant='contained' sx={{ background: '#08705F', opacity: 0.7 }}>
+          <Button type='submit' variant='contained' sx={{ background: '#08705F', opacity: 0.7 }}>
             Yuborish
           </Button>
         </Stack>
