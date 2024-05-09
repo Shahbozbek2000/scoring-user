@@ -78,6 +78,7 @@ const CreateCropInsurance = () => {
               name='farmer_stir'
               placeholder='STIR raqami'
               label='STIR raqami'
+              type='number'
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -166,6 +167,7 @@ const CreateCropInsurance = () => {
               name='crop_area'
               placeholder='Ekin (ko‘chat) maydoni, ga'
               label='Ekin (ko‘chat) maydoni, ga'
+              type='number'
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -174,6 +176,7 @@ const CreateCropInsurance = () => {
               name='crop_fertility_norm'
               placeholder='Me’yoriy hosildorlik, s/ga'
               label='Me’yoriy hosildorlik, s/ga'
+              type='number'
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -182,6 +185,7 @@ const CreateCropInsurance = () => {
               name='crop_price'
               placeholder='Hosilni 1 tn narxi, so‘m'
               label='Hosilni 1 tn narxi, so‘m'
+              type='number'
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -235,6 +239,7 @@ const CreateCropInsurance = () => {
               name='credit_area_region_code'
               placeholder='Viloyat'
               label='Viloyat'
+              type='number'
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
