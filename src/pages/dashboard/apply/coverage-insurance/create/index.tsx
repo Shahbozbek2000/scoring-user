@@ -144,7 +144,7 @@ const CreateCoverageInsurance = () => {
             <InputCheckbox
               control={form.control}
               name='risk_factors_dehydration'
-              label='qurg‘oqchilik, yong‘in, bo‘ron, do‘l, kuchli yomg‘ir (jala), garmsel, qorasovuq,
+              label='Qurg‘oqchilik, yong‘in, bo‘ron, do‘l, kuchli yomg‘ir (jala), garmsel, qorasovuq,
                suv toshqini, yashin urishi, uchuvchi apparatlari va ularning qoldiqlarining tushishi'
               labelPlacement='start'
               sx={{
