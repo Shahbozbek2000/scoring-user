@@ -6,6 +6,7 @@ import { Input } from '@/components/inputs/input'
 
 import { LoadingOverlay } from '@/components/loading-overlay'
 import { useRegister } from './useRegister'
+import { InputPassword } from '@/components/inputs/input-password'
 
 const Register = () => {
   const { form, onRegister, isLoading } = useRegister()
@@ -26,16 +27,23 @@ const Register = () => {
 
         <Stack width='100%' gap='24px' direction='row' alignItems='center'>
           <Stack gap='24px' width='50%'>
+            <Input control={form.control} name='login' placeholder='Login*' label='Login*' />
+            <InputPassword
+              control={form.control}
+              name='password'
+              placeholder='Password*'
+              label='Password*'
+            />
+            <Input control={form.control} name='name' placeholder='Ism*' label='Ism*' />
             <Input
               control={form.control}
-              name='last_name'
-              placeholder='Фамилия*'
+              name='surname'
+              placeholder='Familiya*'
               label='Familiya*'
             />
-            <Input control={form.control} name='first_name' placeholder='Ism*' label='Ism*' />
             <Input
               control={form.control}
-              name='father_name'
+              name='middleName'
               placeholder='Otasining ismi'
               label='Otasining ismi'
             />
@@ -44,7 +52,9 @@ const Register = () => {
               name='email'
               placeholder='Email yoki telefon raqami (login)*'
               label='Email yoki telefon raqami (login)*'
+              type='email'
             />
+
             <Input control={form.control} name='stir' placeholder='' label='STIR raqami' />
             <Typography variant='h6' textAlign='center' fontWeight={500} fontSize='14px'>
               Sizda allaqachon hisob bormi?{' '}
@@ -52,14 +62,7 @@ const Register = () => {
                 Hisobga kiring
               </NavLink>
             </Typography>
-            <Button
-              type='submit'
-              onClick={() => {
-                navigate('/code')
-              }}
-            >
-              Davom etish
-            </Button>
+            <Button type='submit'>Davom etish</Button>
           </Stack>
           <Stack
             width='50%'
