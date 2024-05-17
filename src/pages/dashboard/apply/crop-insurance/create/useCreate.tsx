@@ -37,7 +37,6 @@ interface CropInsurance {
   risk_factors_third_party: boolean
   insurance_amount: number
   insurance_price: number
-  insurance_liability: number
 }
 
 export const useCreate = () => {
@@ -60,13 +59,12 @@ export const useCreate = () => {
       credit_area_massiv_code,
       insurance_amount,
       insurance_price,
-      insurance_liability,
+
       ...rest
     } = data
 
     mutate({
       crop_actual_harvest: Number(crop_actual_harvest),
-      type_code: Number(type_code),
       farmer_stir: Number(farmer_stir),
       crop_area: Number(crop_area),
       crop_fertility_norm: Number(crop_fertility_norm),
@@ -76,7 +74,7 @@ export const useCreate = () => {
       credit_area_massiv_code: Number(credit_area_massiv_code),
       insurance_amount: Number(insurance_amount),
       insurance_price: Number(insurance_price),
-      insurance_liability: Number(insurance_liability),
+      type_code: Number(2),
       ...rest,
     })
     console.log(data)
