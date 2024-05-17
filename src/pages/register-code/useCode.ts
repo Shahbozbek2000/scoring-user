@@ -11,7 +11,7 @@ interface FormValues {
   password: string
 }
 
-export const useLogin = () => {
+export const useCode = () => {
   const navigate = useNavigate()
   const form = useForm<FormValues>({
     resolver: yupResolver(formSchema),

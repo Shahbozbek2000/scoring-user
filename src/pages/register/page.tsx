@@ -1,17 +1,17 @@
 import { Button, Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import { ReactComponent as Logogreeen } from '@/assets/icons/logo-green.svg'
-import { Form } from 'react-router-dom'
+import { Form, NavLink, useNavigate } from 'react-router-dom'
 import { Input } from '@/components/inputs/input'
-import { InputPassword } from '@/components/inputs/input-password'
-import { useLogin } from './useLogin'
+
 import { LoadingOverlay } from '@/components/loading-overlay'
+import { useRegister } from './useRegister'
 
 const Register = () => {
-  const { form, onLogin, isLoading } = useLogin()
-
+  const { form, onRegister, isLoading } = useRegister()
+  const navigate = useNavigate()
   return (
-    <Form onSubmit={form.handleSubmit(onLogin)}>
+    <Form onSubmit={form.handleSubmit(onRegister)}>
       <Stack
         width='832px'
         borderRadius='12px'
@@ -20,31 +20,46 @@ const Register = () => {
         gap='24px'
         bgcolor={theme => theme.palette.allColors.WHITE}
       >
-        <Typography
-          variant='subtitle1'
-          textAlign='center'
-          fontWeight='bold'
-          fontSize='24px'
-          mb='24px'
-        >
-          Hisobga kiring
+        <Typography variant='h4' textAlign='center' fontWeight='bold' fontSize='24px' mb='24px'>
+          Roʻyxatdan oʻtish
         </Typography>
 
         <Stack width='100%' gap='24px' direction='row' alignItems='center'>
           <Stack gap='24px' width='50%'>
             <Input
               control={form.control}
-              name='login'
-              placeholder='Email (login)*'
-              label='Email (login)*'
+              name='last_name'
+              placeholder='Фамилия*'
+              label='Familiya*'
             />
-            <InputPassword
+            <Input control={form.control} name='first_name' placeholder='Ism*' label='Ism*' />
+            <Input
               control={form.control}
-              name='password'
-              placeholder='Parol*'
-              label='Parol*'
+              name='father_name'
+              placeholder='Otasining ismi'
+              label='Otasining ismi'
             />
-            <Button type='submit'>Tizimga kirish</Button>
+            <Input
+              control={form.control}
+              name='email'
+              placeholder='Email yoki telefon raqami (login)*'
+              label='Email yoki telefon raqami (login)*'
+            />
+            <Input control={form.control} name='stir' placeholder='' label='STIR raqami' />
+            <Typography variant='h6' textAlign='center' fontWeight={500} fontSize='14px'>
+              Sizda allaqachon hisob bormi?{' '}
+              <NavLink style={{ color: '#004646', textDecoration: 'none' }} to={'/auth'}>
+                Hisobga kiring
+              </NavLink>
+            </Typography>
+            <Button
+              type='submit'
+              onClick={() => {
+                navigate('/code')
+              }}
+            >
+              Davom etish
+            </Button>
           </Stack>
           <Stack
             width='50%'
