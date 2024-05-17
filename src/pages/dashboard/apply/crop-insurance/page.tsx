@@ -6,6 +6,8 @@ import { CustomPagination } from '@/components/pagination'
 
 const CropInsurance = () => {
   const { data, params, columns, setParams } = usePage()
+  console.log(data, 'data')
+
   return (
     <Stack>
       <Typography

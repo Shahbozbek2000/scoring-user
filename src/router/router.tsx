@@ -2,6 +2,7 @@ import { lazy } from 'react'
 import { ROUTER } from '@/constants/router'
 import Layout from '@/layout'
 import { createBrowserRouter } from 'react-router-dom'
+import EditCropInsurance from '@/pages/dashboard/apply/crop-insurance/edit'
 
 const NotFound = lazy(async () => await import('@/pages/404'))
 const Home = lazy(async () => await import('@/pages/dashboard/home'))
@@ -35,6 +36,7 @@ const ContractCropInsurance = lazy(
 
 const Landing = lazy(async () => await import('@/pages/landing'))
 const Auth = lazy(async () => await import('@/pages/auth'))
+const Register = lazy(async () => await import('@/pages/register'))
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTER.AUTH,
         element: <Auth />,
+      },
+      {
+        path: ROUTER.REGISTER,
+        element: <Register />,
       },
       {
         path: ROUTER.HOME,
@@ -77,6 +83,10 @@ export const router = createBrowserRouter([
                   {
                     path: ROUTER.CREATE,
                     element: <CreateCropInsurance />,
+                  },
+                  {
+                    path: `${ROUTER.EDIT}/:id`,
+                    element: <EditCropInsurance />,
                   },
                 ],
               },

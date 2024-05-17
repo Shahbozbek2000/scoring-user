@@ -2,11 +2,12 @@
 import { createColumnHelper } from '@tanstack/react-table'
 import { Badge } from '@/styles/global'
 import { Button } from '@mui/material'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
 import { getAllApplications } from '@/apis/applications'
+import { ROUTER } from '@/constants/router'
 
 interface IColumns {
   number: number
@@ -26,6 +27,7 @@ const columnHelper = createColumnHelper<IColumns>()
 export const usePage = () => {
   const { search } = useLocation()
   const initial_params = new URLSearchParams(search)
+  const navigate = useNavigate()
   const [params, setParams] = useState({
     page: initial_params.has('page') ? Number(initial_params.get('page')) : 1,
     limit: initial_params.has('limit') ? Number(initial_params.get('limit')) : 10,
@@ -114,7 +116,7 @@ export const usePage = () => {
     columnHelper.accessor('check_status', {
       header: () => <span>Statusni belgilash</span>,
       footer: info => info.column.id,
-      cell: () => (
+      cell: ({ row }: any) => (
         <Button
           variant='outlined'
           sx={{
@@ -123,6 +125,9 @@ export const usePage = () => {
             border: '1px solid #E7E7E7',
             width: 115,
             height: 32,
+          }}
+          onClick={() => {
+            navigate(`${ROUTER.EDIT}/${row?.original?._id}`)
           }}
         >
           Ko'rish
