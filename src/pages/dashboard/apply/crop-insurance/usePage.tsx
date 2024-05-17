@@ -60,11 +60,12 @@ export const usePage = () => {
     columnHelper.accessor('status_name', {
       id: 'status_name',
       cell: ({ row }: any) => {
+        console.log(row.original?.status_name, 'row')
         return (
           <Badge
-            className={`${row.original.status_code === null ? 'in_progress' : row.original?.status_code === true ? 'success' : 'canceled'}`}
+            className={`${row?.original?.status_code === null ? 'in_progress' : row?.original?.status_code === true ? 'success' : 'canceled'}`}
           >
-            {row.original?.status_name}
+            {row?.original?.status_name}
           </Badge>
         )
       },
@@ -124,7 +125,7 @@ export const usePage = () => {
             height: 32,
           }}
         >
-          Belgilash
+          Ko'rish
         </Button>
       ),
     }),

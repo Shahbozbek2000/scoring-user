@@ -239,7 +239,6 @@ const CreateCropInsurance = () => {
               name='credit_area_region_code'
               placeholder='Viloyat'
               label='Viloyat'
-              type='number'
             />
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
