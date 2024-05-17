@@ -7,11 +7,13 @@ import { ROUTER } from '@/constants/router'
 import { useNavigate } from 'react-router-dom'
 
 interface FormValues {
-  last_name: string
-  first_name: string
-  father_name?: string
+  login: string
+  password: string
+  name: string
+  surname: string
+  middleName?: string
   email: string
-  stir?: string
+  stir: string
 }
 
 export const useRegister = () => {
@@ -25,7 +27,7 @@ export const useRegister = () => {
     onSuccess: res => {
       localStorage.setItem('token', res?.data?.token)
       sessionStorage.setItem('token', res?.data?.token)
-      // navigate(ROUTER.HOME)
+      navigate(ROUTER.CODE)
     },
     onError: () => {},
   })

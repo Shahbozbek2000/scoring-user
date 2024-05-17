@@ -5,12 +5,13 @@ import { Form, NavLink } from 'react-router-dom'
 import VerificationInput from 'react-verification-input'
 import { LoadingOverlay } from '@/components/loading-overlay'
 import { useCode } from './useCode'
+import { useState } from 'react'
 
 const RegisterCode = () => {
-  const { form, onLogin, isLoading } = useCode()
-
+  const [value, setValue] = useState<string>('')
+  const { isLoading } = useCode()
   return (
-    <Form onSubmit={form.handleSubmit(onLogin)}>
+    <>
       <Stack
         width='832px'
         borderRadius='12px'
@@ -34,7 +35,19 @@ const RegisterCode = () => {
               Biz sizning elektron pochta manzilingizga tasdiqlash kodini yubordik. Iltimos, kodni
               pastga kiriting
             </Typography>
-            <VerificationInput length={5} />
+            <VerificationInput
+              value={value}
+              onChange={setValue}
+              length={5}
+              placeholder=' '
+              classNames={{
+                container: 'container',
+                character: 'character',
+                characterInactive: 'character--inactive',
+                characterSelected: 'character--selected',
+                characterFilled: 'character--filled',
+              }}
+            />
             <Typography variant='subtitle2' textAlign='center' fontWeight={500} fontSize='14px'>
               Agar kod raqami kelmagan bo’lsa,
               <br />
@@ -77,7 +90,7 @@ const RegisterCode = () => {
         </Stack>
       </Stack>
       <LoadingOverlay isLoading={isLoading} />
-    </Form>
+    </>
   )
 }
 export default RegisterCode

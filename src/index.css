@@ -76,4 +76,17 @@
   border: 1px solid #fff;
 }
 
-
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.character {
+  border-radius: 8px;
+  border: 1px solid #08705f;
+  font-size: 18px;
+  font-weight: bold;
+}

@@ -7,3 +7,6 @@ export const login = async <T>(data: T) => {
 export const register = async <T>(data: T) => {
   return await request.post('/auth/signup', data)
 }
+export const verify = async <T>(data: T) => {
+  return await request.post('/auth/verify', data)
+}
