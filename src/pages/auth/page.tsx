@@ -1,7 +1,7 @@
 import { Button, Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import { ReactComponent as Logogreeen } from '@/assets/icons/logo-green.svg'
-import { Form } from 'react-router-dom'
+import { Form, NavLink } from 'react-router-dom'
 import { Input } from '@/components/inputs/input'
 import { InputPassword } from '@/components/inputs/input-password'
 import { useLogin } from './useLogin'
@@ -44,7 +44,35 @@ const Auth = () => {
               placeholder='Parol*'
               label='Parol*'
             />
-            <Button type='submit'>Tizimga kirish</Button>
+            <NavLink
+              style={{
+                color: '#004646',
+                textDecoration: 'none',
+                textAlign: 'center',
+                fontSize: '14px',
+              }}
+              to={'#'}
+            >
+              Parolni unutdingizmi?
+            </NavLink>
+            <Button type='submit'>Hisobga kiring</Button>
+            <NavLink
+              style={{
+                color: '#004646',
+                textDecoration: 'none',
+                textAlign: 'center',
+                fontSize: '14px',
+              }}
+              to={'#'}
+            >
+              E-imzo orqali tizimga kirish
+            </NavLink>
+            <Typography variant='h6' fontSize={14} textAlign={'center'} fontWeight={500}>
+              Hisobingiz yo'qmi?{' '}
+              <NavLink style={{ color: '#004646', textDecoration: 'none' }} to={'/register'}>
+                Roʻyxatdan oʻtish
+              </NavLink>
+            </Typography>
           </Stack>
           <Stack
             width='50%'

@@ -33,6 +33,7 @@ const ContractCropInsurance = lazy(
 const Landing = lazy(async () => await import('@/pages/landing'))
 const Auth = lazy(async () => await import('@/pages/auth'))
 const Register = lazy(async () => await import('@/pages/register'))
+const RegisterCode = lazy(async () => await import('@/pages/register-code'))
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTER.REGISTER,
         element: <Register />,
+      },
+      {
+        path: ROUTER.CODE,
+        element: <RegisterCode />,
       },
       {
         path: ROUTER.HOME,
