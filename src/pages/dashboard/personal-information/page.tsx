@@ -1,3 +1,4 @@
+import BreadcrumpCustom from '@/components/breadcrup'
 import { Input } from '@/components/inputs/input'
 import { InputPhone } from '@/components/inputs/input-phone'
 import { Button, Grid, Stack, Typography } from '@mui/material'
@@ -8,15 +9,7 @@ const PersonalInformation = () => {
 
   return (
     <Stack>
-      <Typography
-        variant='subtitle1'
-        fontWeight='light'
-        fontSize='18px'
-        mb='24px'
-        fontFamily='GothamProRegular'
-      >
-        Shaxsiy ma'lumotlar
-      </Typography>
+      <BreadcrumpCustom />
       <Stack
         width='100%'
         borderRadius='12px'

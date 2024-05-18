@@ -9,15 +9,6 @@ const Home = () => {
 
   return (
     <Stack>
-      <Typography
-        variant='subtitle1'
-        fontWeight='light'
-        fontSize='18px'
-        mb='24px'
-        fontFamily='GothamProRegular'
-      >
-        Bosh sahifa
-      </Typography>
       <BreadcrumpCustom />
       <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         {pages.map(({ id, name, Icon, link }) => {

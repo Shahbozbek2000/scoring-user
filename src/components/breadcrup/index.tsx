@@ -15,11 +15,27 @@ export default function BreadcrumpCustom() {
     const href = `/${pathSegments.slice(0, i + 1).join('/')}`
 
     return isLast ? (
-      <Typography key={href} color='text.primary'>
+      <Typography
+        key={href}
+        color='text.primary'
+        variant='subtitle1'
+        fontWeight='light'
+        fontSize='18px'
+        fontFamily='GothamProRegular'
+      >
         {newPath.name}
       </Typography>
     ) : (
-      <Link key={href} color='inherit' underline='none' href={href}>
+      <Link
+        key={href}
+        color='#ABAEB1'
+        underline='none'
+        href={href}
+        variant='subtitle1'
+        fontWeight='light'
+        fontSize='14px'
+        fontFamily='GothamProRegular'
+      >
         {newPath.name}
       </Link>
     )

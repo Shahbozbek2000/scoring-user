@@ -53,6 +53,7 @@ export const usePage = () => {
     },
     keepPreviousData: true,
   })
+  console.log(data.results, 'results')
 
   const columns = [
     columnHelper.accessor('number', {
@@ -114,41 +115,21 @@ export const usePage = () => {
       footer: info => info.column.id,
       cell: ({ row }: any) => {
         return (
-          <>
-            {row.original?.status_code ? (
-              <Button
-                variant='outlined'
-                sx={{
-                  width: 108,
-                  height: 36,
-                  color: 'var(--Green)',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                }}
-                onClick={() => {
-                  navigate(`${ROUTER.CREATE}/${row?.original?._id}`)
-                }}
-              >
-                Ko'rish
-              </Button>
-            ) : (
-              <Button
-                variant='outlined'
-                sx={{
-                  width: 108,
-                  height: 36,
-                  color: 'var(--Green)',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                }}
-                onClick={() => {
-                  navigate(`${ROUTER.CREATE}/${row?.original?._id}`)
-                }}
-              >
-                Ko'rish
-              </Button>
-            )}
-          </>
+          <Button
+            variant='outlined'
+            sx={{
+              width: 108,
+              height: 36,
+              color: 'var(--Green)',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+            onClick={() => {
+              navigate(`${ROUTER.CONTRACT}/${row?.original?._id}`)
+            }}
+          >
+            Ko'rish
+          </Button>
         )
       },
     }),
