@@ -1,11 +1,12 @@
 import { CustomTable } from '@/components/table'
 import { Stack, Typography } from '@mui/material'
-import { Header } from './components/header'
 import { usePage } from './usePage'
+import { Filter } from '@/components/filter'
 import { CustomPagination } from '@/components/pagination'
+import { LoadingOverlay } from '@/components/loading-overlay'
 
-const ContractCoverageInsurance = () => {
-  const { data, params, columns, setParams } = usePage()
+const CoverageInsurance = () => {
+  const { data, count, params, columns, setParams, isLoading, isFetching } = usePage()
 
   return (
     <Stack>
@@ -19,21 +20,24 @@ const ContractCoverageInsurance = () => {
         Kreditni qoplash sug’urtasi
       </Typography>
       <Stack gap='32px'>
-        <Header />
+        <Filter />
         <Stack
           width='100%'
           borderRadius='12px'
-          p='24px'
+          p='32px 24px'
           mx='auto'
           gap='24px'
           bgcolor={theme => theme.palette.allColors.WHITE}
         >
           <CustomTable options={{ data, columns }} emptyTitle="Ma'lumot mavjud emas!" />
-          <CustomPagination params={params} setParams={setParams} count={1} />
+          {data.length > 0 && (
+            <CustomPagination params={params} setParams={setParams} count={count} />
+          )}
         </Stack>
+        <LoadingOverlay isLoading={isLoading || isFetching} />
       </Stack>
     </Stack>
   )
 }
 
-export default ContractCoverageInsurance
+export default CoverageInsurance

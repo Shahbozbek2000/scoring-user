@@ -22,6 +22,10 @@ const VideoInstruction = lazy(async () => await import('@/pages/dashboard/video-
 const ContractCoverageInsurance = lazy(
   async () => await import('@/pages/dashboard/contracts/coverage-insurance'),
 )
+const CreateCoverageInsurance = lazy(
+  async () => await import('@/pages/dashboard/contracts/coverage-insurance/create'),
+)
+
 const ContractCropInsurance = lazy(
   async () => await import('@/pages/dashboard/contracts/crop-insurance'),
 )
@@ -88,7 +92,16 @@ export const router = createBrowserRouter([
               },
               {
                 path: ROUTER.COVERAGE_INSURANCE,
-                element: <ContractCoverageInsurance />,
+                children: [
+                  {
+                    index: true,
+                    element: <ContractCoverageInsurance />,
+                  },
+                  {
+                    path: `${ROUTER.CREATE}/:id`,
+                    element: <CreateCoverageInsurance />,
+                  },
+                ],
               },
               {
                 path: ROUTER.CROP_INSURANCE,
