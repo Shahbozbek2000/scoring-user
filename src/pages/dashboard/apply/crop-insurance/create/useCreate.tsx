@@ -1,4 +1,5 @@
 import { createApplications } from '@/apis/applications'
+import { useRegions } from '@/hooks/useRegions'
 import { useMutation } from '@tanstack/react-query'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 
@@ -41,6 +42,7 @@ interface CropInsurance {
 
 export const useCreate = () => {
   const form = useForm()
+  useRegions()
   const { mutate, isLoading } = useMutation({
     mutationFn: async payload => await createApplications(payload),
     onSuccess: data => {},

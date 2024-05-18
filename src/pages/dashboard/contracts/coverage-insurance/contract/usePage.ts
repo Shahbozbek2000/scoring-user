@@ -1,11 +1,5 @@
 import { useState } from 'react'
-import { rejectApplications } from '@/apis/applications'
-import {
-  acceptContract,
-  acceptOrRejectContract,
-  contractGenerateDoc,
-  rejectContract,
-} from '@/apis/contracts'
+import { acceptOrRejectContract, contractGenerateDoc } from '@/apis/contracts'
 import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
