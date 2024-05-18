@@ -2,6 +2,7 @@ import { Grid, Stack, Typography } from '@mui/material'
 import { pages } from './constants'
 import { Card, Left, Right } from './style'
 import { useNavigate } from 'react-router-dom'
+import BreadcrumpCustom from '@/components/breadcrup'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -17,6 +18,7 @@ const Home = () => {
       >
         Bosh sahifa
       </Typography>
+      <BreadcrumpCustom />
       <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         {pages.map(({ id, name, Icon, link }) => {
           return (
