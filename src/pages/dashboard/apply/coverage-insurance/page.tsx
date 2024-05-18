@@ -3,6 +3,7 @@ import { Stack, Typography } from '@mui/material'
 import { Header } from './components/header'
 import { usePage } from './usePage'
 import { CustomPagination } from '@/components/pagination'
+import BreadcrumpCustom from '@/components/breadcrup'
 
 const CropInsurance = () => {
   const { data, params, columns, setParams } = usePage()
@@ -17,6 +18,7 @@ const CropInsurance = () => {
       >
         Kreditni qoplash sug’urtasi bo’yicha arizalar
       </Typography>
+      <BreadcrumpCustom />
       <Stack gap='32px'>
         <Header />
         <Stack
