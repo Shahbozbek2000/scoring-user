@@ -55,7 +55,13 @@ const Register = () => {
               type='email'
             />
 
-            <Input control={form.control} name='stir' placeholder='' label='STIR raqami' />
+            <Input
+              control={form.control}
+              name='stir'
+              placeholder=''
+              label='STIR raqami'
+              type='number'
+            />
             <Typography variant='h6' textAlign='center' fontWeight={500} fontSize='14px'>
               Sizda allaqachon hisob bormi?{' '}
               <NavLink style={{ color: '#004646', textDecoration: 'none' }} to={'/auth'}>

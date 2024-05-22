@@ -1,7 +1,7 @@
 import { Button, Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import { ReactComponent as Logogreeen } from '@/assets/icons/logo-green.svg'
-import { Form, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import VerificationInput from 'react-verification-input'
 import { LoadingOverlay } from '@/components/loading-overlay'
 import { useCode } from './useCode'
@@ -10,6 +10,7 @@ import { useState } from 'react'
 const RegisterCode = () => {
   const [value, setValue] = useState<string>('')
   const { isLoading } = useCode()
+
   return (
     <>
       <Stack
