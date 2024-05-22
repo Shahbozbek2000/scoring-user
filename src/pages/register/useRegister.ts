@@ -5,6 +5,7 @@ import { useMutation } from '@tanstack/react-query'
 import { register } from '@/apis/login'
 import { ROUTER } from '@/constants/router'
 import { useNavigate } from 'react-router-dom'
+import { useAuthStore } from '@/store/user/register'
 
 interface FormValues {
   login: string
@@ -21,6 +22,7 @@ export const useRegister = () => {
   const form = useForm<FormValues>({
     resolver: yupResolver(formSchema),
   })
+  const setLogin = useAuthStore((state: any) => state.setLogin)
 
   const { mutate, isLoading } = useMutation({
     mutationFn: async data => await register(data),
@@ -34,6 +36,7 @@ export const useRegister = () => {
 
   const onRegister: SubmitHandler<FormValues | any> = credentials => {
     mutate(credentials)
+    setLogin(credentials?.login)
   }
 
   return {
