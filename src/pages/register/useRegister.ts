@@ -6,6 +6,7 @@ import { register } from '@/apis/login'
 import { ROUTER } from '@/constants/router'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/user/register'
+import toast from 'react-hot-toast'
 
 interface FormValues {
   login: string
@@ -27,11 +28,12 @@ export const useRegister = () => {
   const { mutate, isLoading } = useMutation({
     mutationFn: async data => await register(data),
     onSuccess: res => {
-      localStorage.setItem('token', res?.data?.token)
-      sessionStorage.setItem('token', res?.data?.token)
+      toast.success('Verification code sent to email')
       navigate(ROUTER.CODE)
     },
-    onError: () => {},
+    onError: (err: any) => {
+      toast.error(err?.response?.data?.message)
+    },
   })
 
   const onRegister: SubmitHandler<FormValues | any> = credentials => {

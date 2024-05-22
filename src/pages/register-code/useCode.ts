@@ -11,15 +11,10 @@ export const useCode = () => {
   const login = useAuthStore((state: any) => state.login)
   const [value, setValue] = useState<string>('')
 
-  console.log(login, 'login')
   const { mutate, isLoading } = useMutation({
     mutationFn: async data => await verify(data),
-    onSuccess: res => {
-      console.log(res, 'res')
-      // localStorage.setItem('token', res?.data?.token)
-      // sessionStorage.setItem('token', res?.data?.token)
-      // navigate(ROUTER.HOME)
-      // window.location.href = ROUTER.HOME
+    onSuccess: () => {
+      navigate(ROUTER.AUTH)
     },
     onError: () => {},
   })
