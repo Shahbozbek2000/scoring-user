@@ -11,12 +11,12 @@ const Home = () => {
     <Stack>
       <BreadcrumpCustom />
       <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        {pages.map(({ id, name, Icon, link }) => {
+        {pages.map(({ id, name, Icon, link, show }) => {
           return (
             <Grid item key={id} xs={6} sm={4} md={4}>
               <Card
                 onClick={() => {
-                  navigate(link)
+                  show && navigate(link)
                 }}
               >
                 <Left>
@@ -27,6 +27,11 @@ const Home = () => {
                     {name}
                   </Typography>
                 </Right>
+                {!show && (
+                  <div className='show'>
+                    <span>Jarayonda</span>
+                  </div>
+                )}
               </Card>
             </Grid>
           )
