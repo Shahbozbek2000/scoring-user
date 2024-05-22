@@ -23,8 +23,8 @@ const Auth = () => {
         <Typography
           variant='subtitle1'
           textAlign='center'
-          fontWeight='bold'
           fontSize='24px'
+          fontFamily='GothamProBold'
           mb='24px'
         >
           Hisobga kiring
@@ -50,6 +50,7 @@ const Auth = () => {
                 textDecoration: 'none',
                 textAlign: 'center',
                 fontSize: '14px',
+                fontFamily: 'GothamProMedium',
               }}
               to={'#'}
             >
@@ -62,14 +63,24 @@ const Auth = () => {
                 textDecoration: 'none',
                 textAlign: 'center',
                 fontSize: '14px',
+                fontFamily: 'GothamProMedium',
               }}
               to={'#'}
             >
               E-imzo orqali tizimga kirish
             </NavLink>
-            <Typography variant='h6' fontSize={14} textAlign={'center'} fontWeight={500}>
+            <Typography
+              variant='h6'
+              fontSize={14}
+              textAlign={'center'}
+              fontWeight={500}
+              fontFamily='GothamProMedium'
+            >
               Hisobingiz yo'qmi?{' '}
-              <NavLink style={{ color: '#004646', textDecoration: 'none' }} to={'/register'}>
+              <NavLink
+                style={{ color: '#004646', textDecoration: 'none', fontFamily: 'GothamProMedium' }}
+                to={'/register'}
+              >
                 Roʻyxatdan oʻtish
               </NavLink>
             </Typography>
