@@ -6,9 +6,10 @@ import { Input } from '@/components/inputs/input'
 import { InputPassword } from '@/components/inputs/input-password'
 import { useLogin } from './useLogin'
 import { LoadingOverlay } from '@/components/loading-overlay'
+import { ReactComponent as IconOneId } from '@/assets/icons/one-id.svg'
 
 const Auth = () => {
-  const { form, onLogin, isLoading } = useLogin()
+  const { form, onLogin, oneidURL, isLoading, isLoadingOneID } = useLogin()
 
   return (
     <Form onSubmit={form.handleSubmit(onLogin)}>
@@ -57,6 +58,26 @@ const Auth = () => {
               Parolni unutdingizmi?
             </NavLink>
             <Button type='submit'>Hisobga kiring</Button>
+            <Button
+              component='a'
+              target='_blank'
+              variant='contained'
+              href={oneidURL}
+              disabled={isLoadingOneID}
+              sx={{
+                paddingLeft: '40px',
+                backgroundColor: '#4825C2',
+                ':hover': {
+                  backgroundColor: '#4825C2',
+                },
+                svg: {
+                  width: '100px',
+                  height: '35px',
+                },
+              }}
+            >
+              <IconOneId />
+            </Button>
             <NavLink
               style={{
                 color: '#004646',
