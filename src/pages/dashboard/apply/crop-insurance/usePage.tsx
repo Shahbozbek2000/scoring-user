@@ -41,7 +41,7 @@ export const usePage = () => {
     isLoading,
   } = useQuery({
     queryKey: [REACT_QUERY_KEYS.GET_ALL_APPLICATIONS, params],
-    queryFn: async () => await getAllApplications({ params, type_code: 2 }),
+    queryFn: async () => await getAllApplications({ params, type_code: 1 }),
     select: res => {
       return {
         count: res?.data?.count,

@@ -46,7 +46,7 @@ export default function EditCropInsurance() {
           <Grid item xs={6} sm={4} md={4}>
             <Input
               control={form.control}
-              name='region'
+              name='region_name'
               placeholder='Viloyat'
               label='Viloyat'
               InputProps={{
@@ -57,7 +57,7 @@ export default function EditCropInsurance() {
           <Grid item xs={6} sm={4} md={4}>
             <Input
               control={form.control}
-              name='district'
+              name='district_name'
               placeholder='Tuman'
               label='Tuman'
               InputProps={{

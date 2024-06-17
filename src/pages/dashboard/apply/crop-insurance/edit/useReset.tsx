@@ -16,7 +16,6 @@ export const useReset = ({ form }: IReset) => {
     queryKey: [REACT_QUERY_KEYS.GET_BY_ID_APPLICATIONS, id],
     queryFn: async () => await getByIDApplications(id),
     select: res => {
-      console.log(res?.data)
       return res?.data
     },
     onSuccess: response => {
@@ -25,6 +24,10 @@ export const useReset = ({ form }: IReset) => {
         credit_area_contour_numbers: response?.credit_area_contour_numbers?.map(Number)?.join(','),
         crop_harvest_start: dayjs(response?.crop_harvest_start).format(DATE_FORMAT),
         crop_harvest_end: dayjs(response?.crop_harvest_end).format(DATE_FORMAT),
+        risk_factors_climatic: response?.risk_factors_climatic,
+        risk_factors_dehydration: response?.risk_factors_dehydration,
+        risk_factors_insects: response?.risk_factors_insects,
+        risk_factors_third_party: response?.risk_factors_third_party,
         ...response,
       })
     },
