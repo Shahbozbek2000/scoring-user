@@ -1,7 +1,10 @@
 import { createApplications } from '@/apis/applications'
+import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
 import { useRegions } from '@/hooks/useRegions'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { type SubmitHandler, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 interface CropInsurance {
   date: string
@@ -43,9 +46,15 @@ interface CropInsurance {
 export const useCreate = () => {
   const form = useForm()
   useRegions()
+  const navigate = useNavigate()
+  const queryClient = useQueryClient()
   const { mutate, isLoading } = useMutation({
     mutationFn: async payload => await createApplications(payload),
-    onSuccess: data => {},
+    onSuccess: () => {
+      toast.success('Ariza muvaffaqiyatli yaratildi')
+      navigate('/main/apply/crop-insurance')
+      void queryClient.invalidateQueries({ queryKey: [REACT_QUERY_KEYS.GET_ALL_APPLICATIONS] })
+    },
     onError: () => {},
   })
   const onCreate: SubmitHandler<CropInsurance | any> = data => {
@@ -61,11 +70,14 @@ export const useCreate = () => {
       credit_area_massiv_code,
       insurance_amount,
       insurance_price,
-
+      date,
+      crop_harvest_start,
+      crop_harvest_end,
       ...rest
     } = data
 
     mutate({
+      date: new Date(date).toISOString(),
       crop_actual_harvest: Number(crop_actual_harvest),
       farmer_stir: Number(farmer_stir),
       crop_area: Number(crop_area),
@@ -77,6 +89,8 @@ export const useCreate = () => {
       insurance_amount: Number(insurance_amount),
       insurance_price: Number(insurance_price),
       type_code: Number(2),
+      crop_harvest_start: new Date(crop_harvest_start).toISOString(),
+      crop_harvest_end: new Date(crop_harvest_end).toISOString(),
       ...rest,
     })
     console.log(data)
