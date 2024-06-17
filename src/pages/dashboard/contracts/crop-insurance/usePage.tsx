@@ -1,32 +1,59 @@
 /* eslint-disable quotes */
-import { createColumnHelper } from '@tanstack/react-table'
+import { getAllContracts } from '@/apis/contracts'
+import { DATE_FORMAT } from '@/constants/format'
+import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
+import { ROUTER } from '@/constants/router'
 import { Badge } from '@/styles/global'
 import { Button } from '@mui/material'
-import { useLocation } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { createColumnHelper } from '@tanstack/react-table'
+import dayjs from 'dayjs'
 import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 interface IColumns {
-  number: number
-  apply_number: string
-  status_name: string
-  status_code: boolean | null
-  farmer_name: string
-  type_name: string
-  date: string
+  number: string | number
+  name: string
+  farmer_name?: string
+  region?: string
+  district?: string
+  type?: string
+  date?: string
   check_status?: string
-  region: string
-  district: string
+  status_code: boolean
+  status_name: string
 }
 
 const columnHelper = createColumnHelper<IColumns>()
 
 export const usePage = () => {
+  const navigate = useNavigate()
   const { search } = useLocation()
   const initial_params = new URLSearchParams(search)
   const [params, setParams] = useState({
     page: initial_params.has('page') ? Number(initial_params.get('page')) : 1,
     limit: initial_params.has('limit') ? Number(initial_params.get('limit')) : 10,
   })
+
+  const {
+    data = {
+      count: 0,
+      results: [],
+    },
+    isLoading,
+    isFetching,
+  } = useQuery({
+    queryKey: [REACT_QUERY_KEYS.GET_ALL_CONTRACTS, params],
+    queryFn: async () => await getAllContracts({ params, type_code: 1 }),
+    select: res => {
+      return {
+        count: res?.data?.count,
+        results: res?.data?.result,
+      }
+    },
+    keepPreviousData: true,
+  })
+  console.log(data.results, 'results')
 
   const columns = [
     columnHelper.accessor('number', {
@@ -36,106 +63,85 @@ export const usePage = () => {
     }),
     columnHelper.accessor('status_name', {
       id: 'status_name',
-      cell: ({ row }: any) => {
+      cell: ({ row }) => {
         return (
           <Badge
-            className={`${row.original.status_code === null ? 'in_progress' : row.original?.status_code === true ? 'success' : 'canceled'}`}
+            className={`${row.original.status_code === null ? 'in_progress' : row.original?.status_code ? 'success' : 'canceled'}`}
           >
             {row.original?.status_name}
           </Badge>
         )
       },
-      header: () => <span>Statusi</span>,
-      footer: info => info.column.id,
-    }),
-    columnHelper.accessor('apply_number', {
-      header: () => 'Ariza raqami',
-      cell: ({ row }) => {
-        return <p>{row.original.farmer_name}</p>
-      },
+      header: () => <span>Ariza statusi</span>,
       footer: info => info.column.id,
     }),
     columnHelper.accessor('farmer_name', {
       header: () => 'Korxona nomi',
-      cell: ({ row }) => {
-        return <p>{row.original.farmer_name}</p>
+      cell: ({ row }: any) => {
+        return <p>{row.original.application?.farmer_name}</p>
       },
       footer: info => info.column.id,
     }),
     columnHelper.accessor('region', {
-      header: () => 'Viloyat',
-      cell: ({ row }) => {
-        return <p>{row.original.region}</p>
+      header: () => <span>Viloyat</span>,
+      cell: ({ row }: any) => {
+        return <p>{row.original.application?.region}</p>
       },
       footer: info => info.column.id,
     }),
     columnHelper.accessor('district', {
-      header: () => 'Tuman',
-      cell: ({ row }) => {
-        return <p>{row.original.district}</p>
+      header: () => <span>Tuman</span>,
+      cell: ({ row }: any) => {
+        return <p>{row.original.application?.district}</p>
       },
       footer: info => info.column.id,
     }),
-    columnHelper.accessor('type_name', {
+    columnHelper.accessor('type', {
       header: () => <span>Sug’urta turi</span>,
-      cell: ({ row }) => {
-        return <p>{row.original.type_name}</p>
+      cell: ({ row }: any) => {
+        return <p>{row.original.application?.type_name}</p>
       },
       footer: info => info.column.id,
     }),
     columnHelper.accessor('date', {
       header: () => <span>Ariza sanasi</span>,
+      cell: ({ row }: any) => {
+        return <p>{dayjs(row.original?.application?.date).format(DATE_FORMAT)}</p>
+      },
       footer: info => info.column.id,
     }),
     columnHelper.accessor('check_status', {
       header: () => <span>Statusni belgilash</span>,
       footer: info => info.column.id,
-      cell: () => (
-        <Button
-          variant='outlined'
-          sx={{
-            color: '#60676D',
-            borderRadius: '4px',
-            border: '1px solid #E7E7E7',
-            width: 115,
-            height: 32,
-          }}
-        >
-          Belgilash
-        </Button>
-      ),
+      cell: ({ row }: any) => {
+        return (
+          <Button
+            variant='outlined'
+            sx={{
+              width: 108,
+              height: 36,
+              color: 'var(--Green)',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+            onClick={() => {
+              navigate(`${ROUTER.CONTRACT}/${row?.original?._id}`)
+            }}
+          >
+            Ko'rish
+          </Button>
+        )
+      },
     }),
   ]
 
-  const data: IColumns[] = [
-    {
-      number: 1,
-      apply_number: '24022024',
-      status_name: "Ro'yxatdan o'tdi",
-      status_code: true,
-      farmer_name: 'MCHJ',
-      type_name: 'Xosil sug’urta',
-      date: '24.02.2024',
-      region: 'Toshkent sh.',
-      district: 'Yunusobod',
-    },
-    {
-      number: 2,
-      apply_number: '24022024',
-      status_name: 'Bekor qilingan',
-      status_code: false,
-      farmer_name: 'MCHJ',
-      type_name: 'Xosil sug’urta',
-      date: '24.02.2024',
-      region: 'Samarqand',
-      district: 'Qibray',
-    },
-  ]
-
   return {
-    data,
+    data: data.results,
+    count: data.count,
     params,
     columns,
     setParams,
+    isLoading,
+    isFetching,
   }
 }

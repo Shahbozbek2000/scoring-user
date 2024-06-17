@@ -43,8 +43,8 @@ export const usePage = () => {
     isLoading,
     isFetching,
   } = useQuery({
-    queryKey: [REACT_QUERY_KEYS.GET_ALL_CONTRACTS],
-    queryFn: getAllContracts,
+    queryKey: [REACT_QUERY_KEYS.GET_ALL_CONTRACTS, params],
+    queryFn: async () => await getAllContracts({ params, type_code: 2 }),
     select: res => {
       return {
         count: res?.data?.count,
@@ -53,7 +53,6 @@ export const usePage = () => {
     },
     keepPreviousData: true,
   })
-  console.log(data.results, 'results')
 
   const columns = [
     columnHelper.accessor('number', {
