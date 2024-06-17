@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import { useState } from 'react'
 import { acceptOrRejectContract, contractGenerateDoc } from '@/apis/contracts'
 import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
@@ -41,9 +42,13 @@ export const usePage = () => {
   const { mutate } = useMutation({
     mutationFn: async () => await acceptOrRejectContract(id, { action: 'accept' }),
     onSuccess: res => {
-      void queryClient.invalidateQueries({ queryKey: [REACT_QUERY_KEYS.GET_ALL_CONTRACTS] })
-      navigate('/main/contracts/coverage-insurance')
-      toast.success('Shartnoma muvaffaqiyatli imzolandi!')
+      if (res?.data?.message === "❌ Shartnoma to'xtatilgan") {
+        toast.error(res?.data?.message)
+      } else {
+        void queryClient.invalidateQueries({ queryKey: [REACT_QUERY_KEYS.GET_ALL_CONTRACTS] })
+        navigate('/main/contracts/crop-insurance')
+        toast.success('Shartnoma muvaffaqiyatli imzolandi!')
+      }
     },
     onError: () => {
       toast.error('Nimdur xatolik yuz berdi!')
@@ -55,10 +60,14 @@ export const usePage = () => {
 
   const { mutate: rejectMutate } = useMutation({
     mutationFn: async data => await acceptOrRejectContract(id, data),
-    onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: [REACT_QUERY_KEYS.GET_ALL_CONTRACTS] })
-      navigate('/main/contracts/coverage-insurance')
-      toast.success('Shartnoma rad etildi')
+    onSuccess: res => {
+      if (res?.data?.message === "❌ Shartnoma to'xtatilgan") {
+        toast.error(res?.data?.message)
+      } else {
+        void queryClient.invalidateQueries({ queryKey: [REACT_QUERY_KEYS.GET_ALL_CONTRACTS] })
+        navigate('/main/contracts/crop-insurance')
+        toast.success('Shartnoma rad etildi')
+      }
     },
     onError: err => {
       console.log(err)

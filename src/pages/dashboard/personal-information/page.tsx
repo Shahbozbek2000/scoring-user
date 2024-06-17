@@ -11,6 +11,7 @@ import { useRegions } from '@/hooks/useRegions'
 import { useProvinces } from '@/hooks/useProvinces'
 import { Form } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { LoadingOverlay } from '@/components/loading-overlay'
 
 const PersonalInformation = () => {
   const form = useForm()
@@ -18,7 +19,7 @@ const PersonalInformation = () => {
   const regions = useRegions()
   const provinces = useProvinces()
 
-  const { refetch } = useQuery({
+  const { refetch, isLoading, isFetching } = useQuery({
     queryKey: ['get-oneid-user'],
     queryFn: async () => await request('auth/oneid/user'),
     select: res => {
@@ -29,6 +30,7 @@ const PersonalInformation = () => {
         company_name: res?.company_name,
         pin: res?.pin,
         phone_number: res?.phone_number,
+        region: 'Andijon',
         ...res,
       })
     },
@@ -197,6 +199,7 @@ const PersonalInformation = () => {
           )}{' '}
         </Stack>
       </Stack>
+      <LoadingOverlay isLoading={isLoading || isFetching} />
     </Form>
   )
 }

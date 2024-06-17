@@ -66,7 +66,7 @@ export const useCreate = () => {
 
     mutate({
       crop_actual_harvest: Number(crop_actual_harvest),
-      type_code: 1,
+      type_code: 2,
       farmer_stir: Number(farmer_stir),
       crop_area: Number(crop_area),
       crop_fertility_norm: Number(crop_fertility_norm),

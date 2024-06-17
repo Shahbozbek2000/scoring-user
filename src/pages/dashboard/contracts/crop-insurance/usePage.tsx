@@ -84,14 +84,14 @@ export const usePage = () => {
     columnHelper.accessor('region', {
       header: () => <span>Viloyat</span>,
       cell: ({ row }: any) => {
-        return <p>{row.original.application?.region}</p>
+        return <p>{row.original.application?.region_name}</p>
       },
       footer: info => info.column.id,
     }),
     columnHelper.accessor('district', {
       header: () => <span>Tuman</span>,
       cell: ({ row }: any) => {
-        return <p>{row.original.application?.district}</p>
+        return <p>{row.original.application?.district_name}</p>
       },
       footer: info => info.column.id,
     }),
@@ -124,7 +124,12 @@ export const usePage = () => {
               cursor: 'pointer',
             }}
             onClick={() => {
-              navigate(`${ROUTER.CONTRACT}/${row?.original?._id}`)
+              console.log(row?.original?.user_acceptance, 'user_acceptance')
+              if (row?.original?.user_acceptance === null) {
+                navigate(`${ROUTER.CONTRACT}/${row?.original?._id}`)
+              } else {
+                navigate(`${ROUTER.CONTRACT}/${row?.original?._id}?user_accepted=true`)
+              }
             }}
           >
             Ko'rish

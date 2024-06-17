@@ -9,6 +9,10 @@ import BreadcrumpCustom from '@/components/breadcrup'
 
 const CreateContractCropInsurance = () => {
   const { docs, form, onCreate, onReject, isLoading, isCanceled, setIsCanceled } = usePage()
+  const object = new URLSearchParams(document.location.search)
+  const socialParams = Object.fromEntries(object.entries())
+
+  console.log(docs, 'socialparams')
 
   return (
     <Stack>
@@ -50,43 +54,62 @@ const CreateContractCropInsurance = () => {
               </Grid>
             </Grid>
           )}
-          <Stack
-            direction='row'
-            width='100%'
-            padding='24px 0'
-            justifyContent='flex-start'
-            gap='16px'
-          >
-            {isCanceled ? (
-              <Button
-                variant='outlined'
-                sx={{ color: '#EB5757', border: '1px solid #EB5757 !important' }}
-                onClick={() => {
-                  onReject()
-                }}
-              >
-                Rad etish
-              </Button>
-            ) : (
-              <Button
-                variant='outlined'
-                sx={{ color: '#EB5757', border: '1px solid #EB5757 !important' }}
-                onClick={() => {
-                  setIsCanceled(true)
-                }}
-              >
-                Rad etish
-              </Button>
-            )}
-            <Button
-              sx={{ backgroundColor: '#08705F' }}
-              onClick={() => {
-                onCreate()
-              }}
+          {socialParams?.user_accepted === 'true' ? (
+            <Stack
+              direction='row'
+              width='100%'
+              padding='24px 0'
+              justifyContent='flex-start'
+              gap='16px'
             >
-              Imzolash
-            </Button>
-          </Stack>
+              <a href={docs?.[0]?.uri} download={true} target='_blank' rel='noreferrer'>
+                <Button
+                  variant='outlined'
+                  sx={{ color: '#08705F', border: '1px solid #08705F !important', opacity: 0.7 }}
+                >
+                  Yuklab olish
+                </Button>
+              </a>
+            </Stack>
+          ) : (
+            <Stack
+              direction='row'
+              width='100%'
+              padding='24px 0'
+              justifyContent='flex-start'
+              gap='16px'
+            >
+              {isCanceled ? (
+                <Button
+                  variant='outlined'
+                  sx={{ color: '#EB5757', border: '1px solid #EB5757 !important' }}
+                  onClick={() => {
+                    onReject()
+                  }}
+                >
+                  Rad etish
+                </Button>
+              ) : (
+                <Button
+                  variant='outlined'
+                  sx={{ color: '#EB5757', border: '1px solid #EB5757 !important' }}
+                  onClick={() => {
+                    setIsCanceled(true)
+                  }}
+                >
+                  Rad etish
+                </Button>
+              )}
+              <Button
+                sx={{ backgroundColor: '#08705F' }}
+                onClick={() => {
+                  onCreate()
+                }}
+              >
+                Imzolash
+              </Button>
+            </Stack>
+          )}
         </Form>
         <LoadingOverlay isLoading={isLoading} />
       </Stack>

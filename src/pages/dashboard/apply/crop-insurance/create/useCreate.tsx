@@ -88,7 +88,7 @@ export const useCreate = () => {
       credit_area_massiv_code: Number(credit_area_massiv_code),
       insurance_amount: Number(insurance_amount),
       insurance_price: Number(insurance_price),
-      type_code: Number(2),
+      type_code: 1,
       crop_harvest_start: new Date(crop_harvest_start).toISOString(),
       crop_harvest_end: new Date(crop_harvest_end).toISOString(),
       ...rest,
