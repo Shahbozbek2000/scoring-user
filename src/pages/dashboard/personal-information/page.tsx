@@ -14,13 +14,13 @@ import toast from 'react-hot-toast'
 import { LoadingOverlay } from '@/components/loading-overlay'
 
 const PersonalInformation = () => {
-  const form = useForm()
+  const form = useForm<any>()
   const [hasEdit, setHasEdit] = useState(false)
   const regions = useRegions()
   const provinces = useProvinces()
 
   const { refetch, isLoading, isFetching } = useQuery({
-    queryKey: ['get-oneid-user'],
+    queryKey: ['get-oneid-user', regions],
     queryFn: async () => await request('auth/oneid/user'),
     select: res => {
       return res?.data
@@ -30,8 +30,10 @@ const PersonalInformation = () => {
         company_name: res?.company_name,
         pin: res?.pin,
         phone_number: res?.phone_number,
-        region: 'Andijon',
-        ...res,
+        region: res?.region,
+        district: res?.district,
+        email: res?.email,
+        address: res?.address,
       })
     },
   })
@@ -56,7 +58,6 @@ const PersonalInformation = () => {
       constitution: '',
       constitutionFile: '',
     }
-    console.log(payload)
     mutate(payload)
   }
 
@@ -80,126 +81,131 @@ const PersonalInformation = () => {
           >
             Foydalanuvchi ma'lumotlari
           </Typography>
-          <Grid container spacing={{ xs: 2, md: 3 }}>
-            <Grid item xs={12} sm={6} md={4}>
-              <Input
-                name='company_name'
-                label='Korxona nomi'
-                control={form.control}
-                placeholder='Korxona nomini kiriting'
-                InputProps={{
-                  readOnly: !hasEdit,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Input
-                name='pin'
-                label='INN'
-                type='number'
-                control={form.control}
-                placeholder='INNni kiriting'
-                disabled
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={{ xs: 2, md: 3 }}>
-            <Grid item xs={12} sm={6} md={4}>
-              <Input
-                name='address'
-                label='Yuridik manzili'
-                control={form.control}
-                placeholder='Yuridik manzilingizni kiriting'
-                InputProps={{
-                  readOnly: !hasEdit,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <CustomSelect
-                control={form.control}
-                name='region'
-                placeholder='Viloyatingizni kiriting'
-                options={regions}
-                label='Viloyat'
-                disabled={!hasEdit}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <CustomSelect
-                control={form.control}
-                name='district'
-                placeholder='Tumaningizni kiriting'
-                options={provinces}
-                label='Tuman'
-                disabled={!hasEdit}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <InputPhone
-                name='phone_number'
-                label='Telefon raqam'
-                control={form.control}
-                sx={{ color: '#60676D' }}
-                InputProps={{
-                  readOnly: !hasEdit,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Input
-                name='email'
-                label='Elektron pochta'
-                control={form.control}
-                placeholder='Elektron pochtangizni kiriting'
-                InputProps={{
-                  readOnly: !hasEdit,
-                }}
-              />
-            </Grid>
-          </Grid>
-          {hasEdit ? (
-            <Stack
-              display='flex'
-              justifyContent='flex-start'
-              flexDirection='row'
-              sx={{ gap: '10px', marginTop: '32px' }}
-            >
-              <Button
-                variant='outlined'
-                sx={{
-                  width: 100,
-                  border: '1.5px solid  #08705F !important',
-                  color: '#08705F',
-                  opacity: 0.7,
-                }}
-              >
-                Tozalash
-              </Button>
-              <Button
-                variant='contained'
-                sx={{ width: 100, border: '1.5px solid  #08705F !important', opacity: 0.7 }}
-                type='submit'
-              >
-                Saqlash
-              </Button>
-            </Stack>
+          {isLoading || isFetching ? (
+            <LoadingOverlay isLoading={isLoading || isFetching} />
           ) : (
-            <Stack display='flex' justifyContent='flex-start' sx={{ marginTop: '32px' }}>
-              <Button
-                variant='outlined'
-                sx={{ width: 195, border: '1.5px solid  #08705F !important', opacity: 0.7 }}
-                onClick={() => {
-                  setHasEdit(true)
-                }}
-              >
-                O’zgartirish kiritish
-              </Button>
-            </Stack>
-          )}{' '}
+            <>
+              <Grid container spacing={{ xs: 2, md: 3 }}>
+                <Grid item xs={12} sm={6} md={4}>
+                  <Input
+                    name='company_name'
+                    label='Korxona nomi'
+                    control={form.control}
+                    placeholder='Korxona nomini kiriting'
+                    InputProps={{
+                      readOnly: !hasEdit,
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <Input
+                    name='pin'
+                    label='INN'
+                    type='number'
+                    control={form.control}
+                    placeholder='INNni kiriting'
+                    disabled
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={{ xs: 2, md: 3 }}>
+                <Grid item xs={12} sm={6} md={4}>
+                  <Input
+                    name='address'
+                    label='Yuridik manzili'
+                    control={form.control}
+                    placeholder='Yuridik manzilingizni kiriting'
+                    InputProps={{
+                      readOnly: !hasEdit,
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <CustomSelect
+                    control={form.control}
+                    name='region'
+                    placeholder='Viloyatingizni kiriting'
+                    options={regions}
+                    label='Viloyat'
+                    disabled={!hasEdit}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <CustomSelect
+                    control={form.control}
+                    name='district'
+                    placeholder='Tumaningizni kiriting'
+                    options={provinces}
+                    label='Tuman'
+                    disabled={!hasEdit}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <InputPhone
+                    name='phone_number'
+                    label='Telefon raqam'
+                    control={form.control}
+                    sx={{ color: '#60676D' }}
+                    InputProps={{
+                      readOnly: !hasEdit,
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <Input
+                    name='email'
+                    label='Elektron pochta'
+                    control={form.control}
+                    placeholder='Elektron pochtangizni kiriting'
+                    InputProps={{
+                      readOnly: !hasEdit,
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              {hasEdit ? (
+                <Stack
+                  display='flex'
+                  justifyContent='flex-start'
+                  flexDirection='row'
+                  sx={{ gap: '10px', marginTop: '32px' }}
+                >
+                  <Button
+                    variant='outlined'
+                    sx={{
+                      width: 100,
+                      border: '1.5px solid  #08705F !important',
+                      color: '#08705F',
+                      opacity: 0.7,
+                    }}
+                  >
+                    Tozalash
+                  </Button>
+                  <Button
+                    variant='contained'
+                    sx={{ width: 100, border: '1.5px solid  #08705F !important', opacity: 0.7 }}
+                    type='submit'
+                  >
+                    Saqlash
+                  </Button>
+                </Stack>
+              ) : (
+                <Stack display='flex' justifyContent='flex-start' sx={{ marginTop: '32px' }}>
+                  <Button
+                    variant='outlined'
+                    sx={{ width: 195, border: '1.5px solid  #08705F !important', opacity: 0.7 }}
+                    onClick={() => {
+                      setHasEdit(true)
+                    }}
+                  >
+                    O’zgartirish kiritish
+                  </Button>
+                </Stack>
+              )}{' '}
+            </>
+          )}
         </Stack>
       </Stack>
-      <LoadingOverlay isLoading={isLoading || isFetching} />
     </Form>
   )
 }

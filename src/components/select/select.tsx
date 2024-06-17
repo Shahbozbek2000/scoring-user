@@ -27,7 +27,7 @@ export const CustomSelect: React.FC<ICustomSelectProps> = ({
       name={name}
       control={control}
       render={({ field }) => (
-        <Select {...field} {...props}>
+        <Select {...field} {...props} sx={{ borderColor: 'red' }}>
           {options.map(option => {
             return (
               <MenuItem key={option.value} value={option.value}>

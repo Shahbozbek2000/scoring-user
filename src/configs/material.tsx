@@ -220,7 +220,7 @@ export const theme = extendTheme({
           '& fieldset': {
             top: 0,
             borderWidth: '1px',
-            borderColor: theme.palette.allColors.GREY,
+            borderColor: 'transparent',
           },
           '&:hover .MuiOutlinedInput-notchedOutline': {
             borderColor: `${theme.palette.allColors.BRAND} !important`,
