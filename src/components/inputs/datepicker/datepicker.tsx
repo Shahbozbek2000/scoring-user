@@ -15,6 +15,10 @@ export const InputDate = ({ name, control, ...props }: any) => {
               {...field}
               {...props}
               sx={{ background: 'transparent !important', width: '100%' }}
+              value={field.value}
+              onChange={date => {
+                field.onChange(date)
+              }}
             />
           </>
         )}

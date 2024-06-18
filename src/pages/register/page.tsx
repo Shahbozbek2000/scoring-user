@@ -64,8 +64,8 @@ const Register = () => {
             <Input
               control={form.control}
               name='email'
-              placeholder='Email yoki telefon raqami (login)*'
-              label='Email yoki telefon raqami (login)*'
+              placeholder='Email *'
+              label='Email *'
               type='email'
             />
 

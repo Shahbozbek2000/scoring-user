@@ -17,10 +17,24 @@ const PersonalInformation = () => {
   const form = useForm<any>()
   const [hasEdit, setHasEdit] = useState(false)
   const regions = useRegions()
-  const provinces = useProvinces()
+  // const provinces = useProvinces()
+
+  const { data: provinces = [] } = useQuery({
+    queryKey: ['get-provinces-profile', form.watch('region')],
+    queryFn: async () => await request(`/data/districts/${form.watch('region')}`),
+    select: res => {
+      return res?.data?.map((v: any) => {
+        return {
+          value: v?.region_soato,
+          label: v?.district,
+        }
+      })
+    },
+    enabled: form.watch('region') !== undefined,
+  })
 
   const { refetch, isLoading, isFetching } = useQuery({
-    queryKey: ['get-oneid-user', regions],
+    queryKey: ['get-oneid-user'],
     queryFn: async () => await request('auth/oneid/user'),
     select: res => {
       return res?.data
@@ -28,7 +42,7 @@ const PersonalInformation = () => {
     onSuccess: res => {
       form.reset({
         company_name: res?.company_name,
-        pin: res?.pin,
+        pin: res?.stir || res?.pin,
         phone_number: res?.phone_number,
         region: res?.region,
         district: res?.district,

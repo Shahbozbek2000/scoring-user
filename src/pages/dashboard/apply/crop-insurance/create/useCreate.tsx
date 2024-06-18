@@ -68,7 +68,7 @@ export const useCreate = () => {
       credit_area_district_code,
       credit_area_region_code,
       credit_area_massiv_code,
-      insurance_amount,
+      // insurance_amount,
       insurance_price,
       date,
       crop_harvest_start,
@@ -77,7 +77,6 @@ export const useCreate = () => {
     } = data
 
     mutate({
-      date: new Date(date).toISOString(),
       crop_actual_harvest: Number(crop_actual_harvest),
       farmer_stir: Number(farmer_stir),
       crop_area: Number(crop_area),
@@ -86,7 +85,7 @@ export const useCreate = () => {
       credit_area_region_code: Number(credit_area_region_code),
       credit_area_district_code: Number(credit_area_district_code),
       credit_area_massiv_code: Number(credit_area_massiv_code),
-      insurance_amount: Number(insurance_amount),
+      // insurance_amount: Number(insurance_amount),
       insurance_price: Number(insurance_price),
       type_code: 1,
       crop_harvest_start: new Date(crop_harvest_start).toISOString(),

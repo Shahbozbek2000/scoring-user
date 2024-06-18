@@ -3,12 +3,14 @@ import { ReactComponent as IconContracts } from '@/assets/icons/contracts.svg'
 import { ReactComponent as IconStatistics } from '@/assets/icons/statistics.svg'
 import { ReactComponent as IconTechnicSupport } from '@/assets/icons/technical-support.svg'
 import { ReactComponent as IconDocuments } from '@/assets/icons/documents.svg'
+import { ReactComponent as IconVideo } from '@/assets/icons/video.svg'
+import { ReactComponent as IconPersonal } from '@/assets/icons/personal.svg'
 
 export const pages = [
   {
     id: 1,
     name: 'Videoqo`llanma',
-    Icon: IconApply,
+    Icon: IconVideo,
     link: 'video-instruction',
     disabled: false,
     show: true,
@@ -16,7 +18,7 @@ export const pages = [
   {
     id: 2,
     name: 'Shaxsiy ma`lumotlar',
-    Icon: IconApply,
+    Icon: IconPersonal,
     link: 'personal-information',
     disabled: false,
     show: true,

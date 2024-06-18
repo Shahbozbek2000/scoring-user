@@ -6,6 +6,7 @@ import { login } from '@/apis/login'
 import { ROUTER } from '@/constants/router'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { request } from '@/configs/requests'
+import toast from 'react-hot-toast'
 
 interface FormValues {
   login: string
@@ -52,7 +53,10 @@ export const useLogin = () => {
   const { mutate, isLoading } = useMutation({
     mutationFn: async data => await login(data),
     onSuccess,
-    onError: () => {},
+    onError: err => {
+      console.log(err, 'err')
+      toast.error('Login yoki parol xato!')
+    },
   })
 
   const onLogin: SubmitHandler<FormValues | any> = credentials => {
