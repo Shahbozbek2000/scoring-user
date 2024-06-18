@@ -42,6 +42,7 @@ const PersonalInformation = () => {
     mutationFn: async data => await request.post('auth/update', data),
     onSuccess: () => {
       void refetch()
+      setHasEdit(false)
       toast.success('Foydalanuvchi ma`lumotlari muvaffaqiyatli yangilandi')
     },
   })
