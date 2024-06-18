@@ -8,6 +8,8 @@ import { useQuery } from '@tanstack/react-query'
 import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
 import { getAllApplications } from '@/apis/applications'
 import { ROUTER } from '@/constants/router'
+import dayjs from 'dayjs'
+import { DATE_FORMAT } from '@/constants/format'
 
 interface IColumns {
   number: number
@@ -18,8 +20,8 @@ interface IColumns {
   type_name: string
   date: string
   check_status?: string
-  region: string
-  district: string
+  region_name: string
+  district_name: string
 }
 
 const columnHelper = createColumnHelper<IColumns>()
@@ -88,17 +90,17 @@ export const usePage = () => {
       },
       footer: info => info.column.id,
     }),
-    columnHelper.accessor('region', {
+    columnHelper.accessor('region_name', {
       header: () => 'Viloyat',
       cell: ({ row }) => {
-        return <p>{row.original.region}</p>
+        return <p>{row.original?.region_name}</p>
       },
       footer: info => info.column.id,
     }),
-    columnHelper.accessor('district', {
+    columnHelper.accessor('district_name', {
       header: () => 'Tuman',
       cell: ({ row }) => {
-        return <p>{row.original.district}</p>
+        return <p>{row.original?.district_name}</p>
       },
       footer: info => info.column.id,
     }),
@@ -112,6 +114,7 @@ export const usePage = () => {
     columnHelper.accessor('date', {
       header: () => <span>Ariza sanasi</span>,
       footer: info => info.column.id,
+      cell: ({ row }) => <p>{dayjs(row?.original?.date).format(DATE_FORMAT)}</p>,
     }),
     columnHelper.accessor('check_status', {
       header: () => <span>Statusni belgilash</span>,

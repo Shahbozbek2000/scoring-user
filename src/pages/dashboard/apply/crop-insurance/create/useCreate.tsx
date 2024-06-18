@@ -2,6 +2,7 @@ import { createApplications } from '@/apis/applications'
 import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
 import { useRegions } from '@/hooks/useRegions'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import dayjs from 'dayjs'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
@@ -57,6 +58,8 @@ export const useCreate = () => {
     },
     onError: () => {},
   })
+
+  console.log(form.watch('date'), 'date')
   const onCreate: SubmitHandler<CropInsurance | any> = data => {
     const {
       crop_actual_harvest,
@@ -77,6 +80,7 @@ export const useCreate = () => {
     } = data
 
     mutate({
+      date: dayjs(date).toISOString(),
       crop_actual_harvest: Number(crop_actual_harvest),
       farmer_stir: Number(farmer_stir),
       crop_area: Number(crop_area),

@@ -54,6 +54,7 @@ const CreateCropInsurance = () => {
         farmer_stir: res?.stir,
         farmer_address: res?.address,
         farmer_name: res?.company_name,
+        date: dayjs(new Date()),
       })
     },
   })
@@ -89,6 +90,7 @@ const CreateCropInsurance = () => {
                   placeholder='Sana'
                   label='Sana'
                   defaultValue={dayjs(new Date())}
+                  disabled
                 />
               </Grid>
               <Grid item xs={6} sm={4} md={4}>
