@@ -62,12 +62,12 @@ export const usePage = () => {
     }),
     columnHelper.accessor('status_name', {
       id: 'status_name',
-      cell: ({ row }) => {
+      cell: ({ row }: any) => {
         return (
           <Badge
-            className={`${row.original.status_code === null ? 'in_progress' : row.original?.status_code ? 'success' : 'canceled'}`}
+            className={`${row.original.user_acceptance?.accepted === null ? 'in_progress' : row.original?.user_acceptance?.accepted ? 'success' : 'canceled'}`}
           >
-            {row.original?.status_name}
+            {row.original?.user_acceptance?.status_name}
           </Badge>
         )
       },
@@ -124,15 +124,14 @@ export const usePage = () => {
               cursor: 'pointer',
             }}
             onClick={() => {
-              console.log(row?.original?.user_acceptance, 'user_acceptance')
-              if (row?.original?.user_acceptance === null) {
-                navigate(`${ROUTER.CONTRACT}/${row?.original?._id}`)
-              } else {
-                navigate(`${ROUTER.CONTRACT}/${row?.original?._id}?user_accepted=true`)
+              if (row?.original?.user_acceptance?.accepted) {
+                navigate(`${ROUTER.CONTRACT}/${row?.original?._id}?user_accepted=accepted`)
+              } else if (!row?.original?.user_acceptance?.accepted) {
+                navigate(`${ROUTER.CONTRACT}/${row?.original?._id}?user_accepted=canceled`)
               }
             }}
           >
-            Ko'rish
+            {row?.original?.user_acceptance?.accepted === null ? 'Imzolash' : "Ko'rish"}
           </Button>
         )
       },

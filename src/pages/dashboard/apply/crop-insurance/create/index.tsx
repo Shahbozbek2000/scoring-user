@@ -35,7 +35,20 @@ const CreateCropInsurance = () => {
     },
     enabled: form.watch('region_code') !== undefined,
   })
-  console.log(form.watch('region'))
+
+  const { data: massiveList = [] } = useQuery({
+    queryKey: ['get-confines', form.watch('credit_area_district_code')],
+    queryFn: async () => await request(`/data/massifs/${form.watch('credit_area_district_code')}`),
+    select: res => {
+      return res?.data?.map((v: any) => {
+        return {
+          value: v?.massiv_kod,
+          label: v?.massiv,
+        }
+      })
+    },
+    enabled: form.watch('credit_area_district_code') !== undefined,
+  })
 
   const { isLoading: defaultLoading, isFetching } = useQuery({
     queryKey: ['get-oneid-user-info'],
@@ -60,6 +73,7 @@ const CreateCropInsurance = () => {
     },
   })
 
+  console.log(massiveList, 'massiveList')
   return (
     <Stack>
       <BreadcrumpCustom />
@@ -313,11 +327,12 @@ const CreateCropInsurance = () => {
                 />
               </Grid>
               <Grid item xs={6} sm={4} md={4}>
-                <Input
-                  control={form.control}
+                <CustomSelect
                   name='credit_area_massiv_code'
+                  control={form.control}
                   placeholder='Hudud (massiv)'
                   label='Hudud (massiv)'
+                  options={massiveList}
                 />
               </Grid>
               <Grid item xs={6} sm={4} md={4}>

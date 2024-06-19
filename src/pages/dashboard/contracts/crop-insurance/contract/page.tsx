@@ -12,7 +12,7 @@ const CreateContractCropInsurance = () => {
   const object = new URLSearchParams(document.location.search)
   const socialParams = Object.fromEntries(object.entries())
 
-  console.log(docs, 'socialparams')
+  console.log(socialParams, 'socialparams')
 
   return (
     <Stack>
@@ -54,7 +54,9 @@ const CreateContractCropInsurance = () => {
               </Grid>
             </Grid>
           )}
-          {socialParams?.user_accepted === 'true' ? (
+
+          {socialParams?.user_accepted === 'accepted' ||
+          socialParams?.user_accepted === 'canceled' ? (
             <Stack
               direction='row'
               width='100%'
@@ -65,7 +67,7 @@ const CreateContractCropInsurance = () => {
               <a href={docs?.[0]?.uri} download={true} target='_blank' rel='noreferrer'>
                 <Button
                   variant='outlined'
-                  sx={{ color: '#08705F', border: '1px solid #08705F !important', opacity: 0.7 }}
+                  sx={{ color: '#08705F', border: '1px solid #08705F !important' }}
                 >
                   Yuklab olish
                 </Button>
