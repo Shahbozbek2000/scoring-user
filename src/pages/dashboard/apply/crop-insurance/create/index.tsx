@@ -35,6 +35,19 @@ const CreateCropInsurance = () => {
     },
     enabled: form.watch('region_code') !== undefined,
   })
+  const { data: provinces2 = [] } = useQuery({
+    queryKey: ['get-provinces-2', form.watch('credit_area_region_code')],
+    queryFn: async () => await request(`/data/districts/${form.watch('credit_area_region_code')}`),
+    select: res => {
+      return res?.data?.map((v: any) => {
+        return {
+          value: v?.region_soato,
+          label: v?.district,
+        }
+      })
+    },
+    enabled: form.watch('credit_area_region_code') !== undefined,
+  })
 
   const { data: massiveList = [] } = useQuery({
     queryKey: ['get-confines', form.watch('credit_area_district_code')],
@@ -323,7 +336,7 @@ const CreateCropInsurance = () => {
                   control={form.control}
                   placeholder='Tuman'
                   label='Tuman'
-                  options={provinces}
+                  options={provinces2}
                 />
               </Grid>
               <Grid item xs={6} sm={4} md={4}>
