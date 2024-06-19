@@ -126,8 +126,10 @@ export const usePage = () => {
             onClick={() => {
               if (row?.original?.user_acceptance?.accepted) {
                 navigate(`${ROUTER.CONTRACT}/${row?.original?._id}?user_accepted=accepted`)
-              } else if (!row?.original?.user_acceptance?.accepted) {
+              } else if (row?.original?.user_acceptance?.accepted === false) {
                 navigate(`${ROUTER.CONTRACT}/${row?.original?._id}?user_accepted=canceled`)
+              } else {
+                navigate(`${ROUTER.CONTRACT}/${row?.original?._id}?user_accepted=created`)
               }
             }}
           >
