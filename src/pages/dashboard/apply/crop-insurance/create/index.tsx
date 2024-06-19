@@ -23,8 +23,8 @@ const CreateCropInsurance = () => {
   const { form, isLoading, onCreate } = useCreate()
 
   const { data: provinces = [] } = useQuery({
-    queryKey: ['get-provinces', form.watch('region')],
-    queryFn: async () => await request(`/data/districts/${form.watch('region')}`),
+    queryKey: ['get-provinces', form.watch('region_code')],
+    queryFn: async () => await request(`/data/districts/${form.watch('region_code')}`),
     select: res => {
       return res?.data?.map((v: any) => {
         return {
@@ -33,8 +33,9 @@ const CreateCropInsurance = () => {
         }
       })
     },
-    enabled: form.watch('region') !== undefined,
+    enabled: form.watch('region_code') !== undefined,
   })
+  console.log(form.watch('region'))
 
   const { isLoading: defaultLoading, isFetching } = useQuery({
     queryKey: ['get-oneid-user-info'],
@@ -47,8 +48,8 @@ const CreateCropInsurance = () => {
         company_name: res?.company_name,
         pin: res?.stir || res?.pin,
         phone_number: res?.phone_number,
-        region: res?.region,
-        district: res?.district,
+        region_code: res?.region,
+        district_code: res?.district,
         email: res?.email,
         address: res?.address,
         farmer_stir: res?.stir,
@@ -95,7 +96,7 @@ const CreateCropInsurance = () => {
               </Grid>
               <Grid item xs={6} sm={4} md={4}>
                 <CustomSelect
-                  name='region'
+                  name='region_code'
                   control={form.control}
                   placeholder='Viloyat'
                   label='Viloyat'
@@ -104,7 +105,7 @@ const CreateCropInsurance = () => {
               </Grid>
               <Grid item xs={6} sm={4} md={4}>
                 <CustomSelect
-                  name='district'
+                  name='district_code'
                   control={form.control}
                   placeholder='Tuman'
                   label='Tuman'
