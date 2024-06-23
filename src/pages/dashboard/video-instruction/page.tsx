@@ -1,4 +1,5 @@
 import { Divider, Stack, Typography } from '@mui/material'
+import ReactPlayer from 'react-player'
 
 const VideoInstruction = () => {
   return (
@@ -40,15 +41,14 @@ const VideoInstruction = () => {
         >
           How to use AIS
         </Typography>
-        <Stack
-          src={'https://www.youtube.com/embed/aAIH6yLgI68?si=xfANKZEvK72-FRp_'}
-          allow={
-            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-          }
-          frameBorder='0'
-          allowFullScreen
-          component='iframe'
-          sx={{ height: '600px', borderRadius: '24px' }}
+        <ReactPlayer
+          url='https://www.youtube.com/watch?v=yNVZxzloWRA'
+          width='100%'
+          height={600}
+          style={{
+            borderRadius: '24px',
+            overflow: 'hidden',
+          }}
         />
         <Typography
           sx={{
@@ -72,15 +72,76 @@ const VideoInstruction = () => {
         >
           How to use AIS
         </Typography>
-        <Stack
-          src={'https://www.youtube.com/embed/aAIH6yLgI68?si=xfANKZEvK72-FRp_'}
-          allow={
-            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-          }
-          frameBorder='0'
-          allowFullScreen
-          component='iframe'
-          sx={{ height: '600px', borderRadius: '24px' }}
+        <ReactPlayer
+          url='https://www.youtube.com/watch?v=X2KmyVFeMzw'
+          width='100%'
+          height={600}
+          style={{
+            borderRadius: '24px',
+            overflow: 'hidden',
+          }}
+        />
+        <Typography
+          sx={{
+            color: '#191E1D',
+            fontFamily: 'GothamProMedium',
+            fontSize: 14,
+            textAlign: 'justify',
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at pharetra erat, eu congue
+          felis. Ut ultricies in mauris vulputate volutpat. Donec quis nibh hendrerit, dictum mi in,
+          aliquam neque. Praesent auctor finibus ante at tincidunt. Sed sodales blandit pretium.
+          Suspendisse placerat pulvinar dolor, et accumsan metus tincidunt sit amet. Morbi varius ex
+          non viverra blandit. Donec sit amet tristique purus. Interdum et malesuada fames ac ante
+          ipsum primis in faucibus.
+        </Typography>
+      </Stack>
+      <Stack gap='24px'>
+        <Typography
+          sx={{ color: '#191E1D', fontFamily: 'GothamProMedium', fontSize: 24, fontWeight: 500 }}
+        >
+          How to use AIS
+        </Typography>
+        <ReactPlayer
+          url='https://www.youtube.com/watch?v=UnI1-M7Vo98'
+          width='100%'
+          height={600}
+          style={{
+            borderRadius: '24px',
+            overflow: 'hidden',
+          }}
+        />
+        <Typography
+          sx={{
+            color: '#191E1D',
+            fontFamily: 'GothamProMedium',
+            fontSize: 14,
+            textAlign: 'justify',
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at pharetra erat, eu congue
+          felis. Ut ultricies in mauris vulputate volutpat. Donec quis nibh hendrerit, dictum mi in,
+          aliquam neque. Praesent auctor finibus ante at tincidunt. Sed sodales blandit pretium.
+          Suspendisse placerat pulvinar dolor, et accumsan metus tincidunt sit amet. Morbi varius ex
+          non viverra blandit. Donec sit amet tristique purus. Interdum et malesuada fames ac ante
+          ipsum primis in faucibus.
+        </Typography>
+      </Stack>
+      <Stack gap='24px'>
+        <Typography
+          sx={{ color: '#191E1D', fontFamily: 'GothamProMedium', fontSize: 24, fontWeight: 500 }}
+        >
+          How to use AIS
+        </Typography>
+        <ReactPlayer
+          url='https://www.youtube.com/watch?v=svGtu-KHbhw'
+          width='100%'
+          height={600}
+          style={{
+            borderRadius: '24px',
+            overflow: 'hidden',
+          }}
         />
         <Typography
           sx={{

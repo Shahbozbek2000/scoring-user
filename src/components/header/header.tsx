@@ -1,11 +1,15 @@
 import { ReactComponent as Logo } from '@/assets/icons/logo.svg'
 import { ROUTER } from '@/constants/router'
-import { Container } from '@mui/material'
+import { Button, Container } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Profile } from './profile'
+import { getUser } from '@/utils/user'
 
 export const Header = () => {
+  const user = getUser()
+  const navigate = useNavigate()
+
   return (
     <Stack
       width='100%'
@@ -22,7 +26,19 @@ export const Header = () => {
           <Link to={ROUTER.LANDING}>
             <Logo />
           </Link>
-          <Profile />
+          {user === null ? (
+            <Button
+              variant='outlined'
+              sx={{ color: '#fff', fontSize: 18 }}
+              onClick={() => {
+                navigate('/auth')
+              }}
+            >
+              Kirish
+            </Button>
+          ) : (
+            <Profile />
+          )}
         </Stack>
       </Container>
     </Stack>

@@ -102,3 +102,7 @@ input:-webkit-autofill:active {
 fieldset {
   border: none !important;
 }
+
+video {
+  width: 100% !important;
+}
