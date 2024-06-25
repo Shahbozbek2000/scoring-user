@@ -285,14 +285,18 @@ const CreateCropInsurance = () => {
                   type='number'
                 />
               </Grid>
-              <Grid item xs={6} sm={4} md={4}>
-                <Input
-                  control={form.control}
-                  name='legal_location'
-                  placeholder='Terim-yig‘im muddati'
-                  label='Terim-yig‘im muddati'
-                />
-              </Grid>
+            </Grid>
+            <Typography
+              sx={{
+                fontFamily: 'GothamProRegular',
+                fontSize: 16,
+                color: 'var(--dark)',
+                margin: '8px 0',
+              }}
+            >
+              Terim-yig'im muddati
+            </Typography>
+            <Grid container spacing={{ xs: 2, md: 2 }}>
               <Grid item xs={6} sm={4} md={4}>
                 <InputDate
                   control={form.control}
