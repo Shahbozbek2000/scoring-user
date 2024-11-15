@@ -34,7 +34,7 @@ export const useLogin = () => {
   const onSuccess = (res: any) => {
     localStorage.setItem('token', res?.data?.token)
     sessionStorage.setItem('token', res?.data?.token)
-    navigate(ROUTER.HOME)
+    navigate(ROUTER.LANDING)
   }
 
   useQuery({

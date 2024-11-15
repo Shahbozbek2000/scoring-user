@@ -238,6 +238,53 @@ const CreateCropInsurance = () => {
                 margin: '8px 0',
               }}
             >
+              Sug‘urtalash hududi
+            </Typography>
+            <Grid container spacing={{ xs: 2, md: 2 }}>
+              <Grid item xs={6} sm={4} md={4}>
+                <CustomSelect
+                  name='credit_area_region_code'
+                  control={form.control}
+                  placeholder='Viloyat'
+                  label='Viloyat'
+                  options={regions}
+                />
+              </Grid>
+              <Grid item xs={6} sm={4} md={4}>
+                <CustomSelect
+                  name='credit_area_district_code'
+                  control={form.control}
+                  placeholder='Tuman'
+                  label='Tuman'
+                  options={provinces2}
+                />
+              </Grid>
+              <Grid item xs={6} sm={4} md={4}>
+                <CustomSelect
+                  name='credit_area_massiv_code'
+                  control={form.control}
+                  placeholder='Hudud (massiv)'
+                  label='Hudud (massiv)'
+                  options={massiveList}
+                />
+              </Grid>
+              <Grid item xs={6} sm={4} md={4}>
+                <Input
+                  control={form.control}
+                  name='credit_area_contour_numbers'
+                  placeholder='Kontur raqamlari'
+                  label='Kontur raqamlari'
+                />
+              </Grid>
+            </Grid>
+            <Typography
+              sx={{
+                fontFamily: 'GothamProRegular',
+                fontSize: 16,
+                color: 'var(--dark)',
+                margin: '8px 0',
+              }}
+            >
               Sug‘urtalash so‘ralgan ekinlar haqida asosiy ma’lumotlar
             </Typography>
             <Grid container spacing={{ xs: 2, md: 2 }}>
@@ -314,53 +361,7 @@ const CreateCropInsurance = () => {
                 />
               </Grid>
             </Grid>
-            <Typography
-              sx={{
-                fontFamily: 'GothamProRegular',
-                fontSize: 16,
-                color: 'var(--dark)',
-                margin: '8px 0',
-              }}
-            >
-              Sug‘urtalash hududi
-            </Typography>
-            <Grid container spacing={{ xs: 2, md: 2 }}>
-              <Grid item xs={6} sm={4} md={4}>
-                <CustomSelect
-                  name='credit_area_region_code'
-                  control={form.control}
-                  placeholder='Viloyat'
-                  label='Viloyat'
-                  options={regions}
-                />
-              </Grid>
-              <Grid item xs={6} sm={4} md={4}>
-                <CustomSelect
-                  name='credit_area_district_code'
-                  control={form.control}
-                  placeholder='Tuman'
-                  label='Tuman'
-                  options={provinces2}
-                />
-              </Grid>
-              <Grid item xs={6} sm={4} md={4}>
-                <CustomSelect
-                  name='credit_area_massiv_code'
-                  control={form.control}
-                  placeholder='Hudud (massiv)'
-                  label='Hudud (massiv)'
-                  options={massiveList}
-                />
-              </Grid>
-              <Grid item xs={6} sm={4} md={4}>
-                <Input
-                  control={form.control}
-                  name='credit_area_contour_numbers'
-                  placeholder='Kontur raqamlari'
-                  label='Kontur raqamlari'
-                />
-              </Grid>
-            </Grid>
+
             <Typography
               sx={{
                 fontFamily: 'GothamProRegular',

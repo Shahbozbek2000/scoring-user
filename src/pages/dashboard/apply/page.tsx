@@ -11,7 +11,7 @@ const Apply = () => {
     <Stack>
       <BreadcrumpCustom />
       <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        {pages.map(({ id, name, Icon, link }) => {
+        {pages.map(({ id, name, Icon, link, disabled }) => {
           return (
             <Grid item key={id} xs={6} sm={4} md={4}>
               <Card

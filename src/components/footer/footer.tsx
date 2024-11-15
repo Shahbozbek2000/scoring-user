@@ -32,6 +32,56 @@ export const Foooter = () => {
                 color={theme => theme.palette.allColors.BLACK}
                 fontFamily='GothamProRegular'
               >
+                Texnik qo’llab quvvatlash
+              </Typography>
+              <Typography
+                color={theme => theme.palette.allColors.GREY10}
+                component='span'
+                fontFamily='GothamProRegular'
+              >
+                Telefon raqam:
+              </Typography>
+              <Typography
+                color={theme => theme.palette.allColors.GREY10}
+                component='span'
+                fontFamily='GothamProRegular'
+              >
+                +998 99 631 42 21
+              </Typography>
+              <Typography
+                color={theme => theme.palette.allColors.GREY10}
+                component='span'
+                fontFamily='GothamProRegular'
+              >
+                +998 90 901 86 69
+              </Typography>
+              <Typography
+                color={theme => theme.palette.allColors.GREY10}
+                component='span'
+                fontFamily='GothamProRegular'
+              >
+                Telegram:
+              </Typography>
+              <Typography
+                color={theme => theme.palette.allColors.GREY10}
+                component='span'
+                fontFamily='GothamProRegular'
+              >
+                @Support_t/me
+              </Typography>
+              <Typography
+                color={theme => theme.palette.allColors.GREY10}
+                component='span'
+                fontFamily='GothamProRegular'
+              >
+                +998 90 901 86 69
+              </Typography>
+            </Stack>
+            <Stack gap='4px'>
+              <Typography
+                color={theme => theme.palette.allColors.BLACK}
+                fontFamily='GothamProRegular'
+              >
                 Sahifalar
               </Typography>
               <Typography

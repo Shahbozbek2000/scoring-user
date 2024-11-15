@@ -7,7 +7,7 @@ export const pages = [
     name: 'Kreditni qoplash sug’urtasi',
     Icon: IconApply,
     link: 'coverage-insurance',
-    disabled: true,
+    disabled: false,
   },
   {
     id: 2,
@@ -15,5 +15,12 @@ export const pages = [
     Icon: IconContracts,
     link: 'crop-insurance',
     disabled: false,
+  },
+  {
+    id: 3,
+    name: "Ekinlar ro'yxati",
+    Icon: IconContracts,
+    link: 'crop-insurance',
+    disabled: true,
   },
 ]

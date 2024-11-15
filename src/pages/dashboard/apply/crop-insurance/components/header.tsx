@@ -11,15 +11,12 @@ export const Header = () => {
     <Stack
       width='100%'
       borderRadius='12px'
-      p='24px'
       mx='auto'
       gap='24px'
-      bgcolor={theme => theme.palette.allColors.WHITE}
       display='flex'
       flexDirection='row'
-      justifyContent='space-between'
+      justifyContent='flex-end'
     >
-      <CustomRadioGroup options={filter} />
       <Button
         sx={{ maxWidth: 150, backgroundColor: '#08705F', height: 32, borderRadius: '4px' }}
         onClick={() => {

@@ -11,13 +11,11 @@ export const Main = () => {
   const user = getUser()
   const navigate = useNavigate()
 
-  console.log(user, 'user')
-
   const handleNavigate = () => {
     if (user === null) {
       navigate(ROUTER.AUTH)
     } else {
-      navigate(ROUTER.HOME)
+      navigate(`${ROUTER.HOME}/${ROUTER.APPLY}`)
     }
   }
 

@@ -1,5 +1,5 @@
 import { CustomTable } from '@/components/table'
-import { Stack, Typography } from '@mui/material'
+import { Stack } from '@mui/material'
 import { Header } from './components/header'
 import { usePage } from './usePage'
 import { CustomPagination } from '@/components/pagination'
@@ -7,7 +7,6 @@ import BreadcrumpCustom from '@/components/breadcrup'
 
 const CropInsurance = () => {
   const { data, params, columns, setParams } = usePage()
-  console.log(data, 'data')
 
   return (
     <Stack>
@@ -23,7 +22,7 @@ const CropInsurance = () => {
           bgcolor={theme => theme.palette.allColors.WHITE}
         >
           <CustomTable options={{ data, columns }} emptyTitle="Ma'lumot mavjud emas!" />
-          {data.length > 0 && (
+          {data?.length > 0 && (
             <CustomPagination params={params} setParams={setParams} count={data.length} />
           )}
         </Stack>
