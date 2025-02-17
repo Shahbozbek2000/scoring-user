@@ -1,8 +1,4 @@
 import { ReactComponent as IconApply } from '@/assets/icons/apply.svg'
-import { ReactComponent as IconContracts } from '@/assets/icons/contracts.svg'
-import { ReactComponent as IconStatistics } from '@/assets/icons/statistics.svg'
-import { ReactComponent as IconTechnicSupport } from '@/assets/icons/technical-support.svg'
-import { ReactComponent as IconDocuments } from '@/assets/icons/documents.svg'
 import { ReactComponent as IconVideo } from '@/assets/icons/video.svg'
 import { ReactComponent as IconPersonal } from '@/assets/icons/personal.svg'
 

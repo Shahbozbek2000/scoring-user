@@ -194,7 +194,7 @@ const CreateCropInsurance = () => {
                 margin: '8px 0',
               }}
             >
-              Naf oluvchi to‘g‘risida ma’lumot
+              Naf oluvchi
             </Typography>
             <Grid container spacing={{ xs: 2, md: 2 }}>
               <Grid item xs={6} sm={4} md={4}>
@@ -285,7 +285,7 @@ const CreateCropInsurance = () => {
                 margin: '8px 0',
               }}
             >
-              Sug‘urtalash so‘ralgan ekinlar haqida asosiy ma’lumotlar
+              Sug‘urtalash uchun so‘ralgan ekinlar
             </Typography>
             <Grid container spacing={{ xs: 2, md: 2 }}>
               <Grid item xs={6} sm={4} md={4}>
