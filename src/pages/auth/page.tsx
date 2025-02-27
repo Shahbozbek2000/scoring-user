@@ -1,15 +1,22 @@
 import { Button, Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import { ReactComponent as Logogreeen } from '@/assets/icons/logo-green.svg'
-import { Form, NavLink } from 'react-router-dom'
+import { Form, Navigate, NavLink } from 'react-router-dom'
 import { Input } from '@/components/inputs/input'
 import { InputPassword } from '@/components/inputs/input-password'
 import { useLogin } from './useLogin'
 import { LoadingOverlay } from '@/components/loading-overlay'
 import { ReactComponent as IconOneId } from '@/assets/icons/one-id.svg'
+import { getUser, isExpiredToken } from '@/utils/user'
 
 const Auth = () => {
+  const user = getUser()
+  const { isExpiredAccess } = isExpiredToken()
   const { form, onLogin, oneidURL, isLoading, isLoadingOneID } = useLogin()
+
+  if (user && !isExpiredAccess) {
+    return <Navigate to='/' />
+  }
 
   return (
     <Form onSubmit={form.handleSubmit(onLogin)}>

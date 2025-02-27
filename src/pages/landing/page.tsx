@@ -8,8 +8,6 @@ import { getUser } from '@/utils/user'
 const Landing = () => {
   const user = getUser()
 
-  console.log(user, 'user')
-
   return (
     <Stack sx={{ gap: '64px' }}>
       <Main />

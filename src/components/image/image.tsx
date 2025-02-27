@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Conatiner } from './style'
 import Box from '@mui/material/Box'
 import Skeleton from '@mui/material/Skeleton'

@@ -4,10 +4,13 @@ import IconUser from '@/assets/icons/user.svg'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { COLORS } from '@/constants/css'
 import { ROUTER } from '@/constants/router'
+import { jwtDecode } from 'jwt-decode'
 
 export const Profile = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
+  const token: string | null = localStorage.getItem('token')
+  const user: any = token ? jwtDecode(token) : null
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
@@ -36,7 +39,7 @@ export const Profile = () => {
               color: '#fff',
             }}
           >
-            Username
+            {user?.login}
           </Typography>
         </Stack>
       </Button>
