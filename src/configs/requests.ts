@@ -1,4 +1,3 @@
-import { ROUTER } from '@/constants/router'
 import { type ErrorProps } from '@/types/error'
 import { getUser, isExpiredToken } from '@/utils/user'
 import axios, { type AxiosHeaders } from 'axios'
@@ -14,7 +13,6 @@ request.interceptors.request.use(
       const { isExpiredAccess } = isExpiredToken()
       if (isExpiredAccess) {
         localStorage.clear()
-        window.location.href = ROUTER.AUTH
         return config
       }
       ;(config.headers as AxiosHeaders).set('Authorization', `Bearer ${user}`)

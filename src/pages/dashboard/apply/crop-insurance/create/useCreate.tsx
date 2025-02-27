@@ -56,7 +56,9 @@ export const useCreate = () => {
       navigate('/main/apply/crop-insurance')
       void queryClient.invalidateQueries({ queryKey: [REACT_QUERY_KEYS.GET_ALL_APPLICATIONS] })
     },
-    onError: () => {},
+    onError: (err: { response: { data: { message: string } } }) => {
+      toast.error(err?.response?.data?.message || 'Nimadur xatolik yuz berdi!')
+    },
   })
 
   console.log(form.watch('date'), 'date')

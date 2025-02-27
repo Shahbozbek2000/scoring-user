@@ -433,7 +433,7 @@ const CreateCropInsurance = () => {
                 margin: '8px 0',
               }}
             >
-              Sug‘urta qiymati va sug‘urta summasi
+              Sug‘urta qiymati
             </Typography>
             <Grid
               container
@@ -444,7 +444,7 @@ const CreateCropInsurance = () => {
                 <CustomSelect
                   control={form.control}
                   name='insurance_price'
-                  label='Sug‘urta summasi (sug‘urta javobgarligi), so‘m'
+                  label="Sug'urta javobgarligi (foiz)"
                   options={insurancePrice}
                 />
               </Grid>

@@ -14,7 +14,6 @@ const queryCache = new QueryCache({
     console.log(error, 'errr')
     if (error?.response?.status === 401) {
       localStorage.clear()
-      window.location.href = '/auth'
     }
   },
 })
