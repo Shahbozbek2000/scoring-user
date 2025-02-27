@@ -4,7 +4,7 @@ interface ILocartionProps {
 }
 export const location: ILocartionProps[] = [
   {
-    path: 'main',
+    path: '/',
     name: 'Bosh sahifa',
   },
   {
