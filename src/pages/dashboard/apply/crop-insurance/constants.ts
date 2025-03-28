@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 export const filter = [
   {
     value: 'apply_status',
@@ -32,4 +33,22 @@ export const insurancePrice = [
   { value: 70, label: '70' },
   { value: 80, label: '80' },
   { value: 100, label: '100' },
+]
+
+export const cropList = [
+  {
+    id: 1,
+    name: 'Paxta',
+    value: 'cotton',
+  },
+  {
+    id: 2,
+    name: "G'alla",
+    value: 'grain',
+  },
+  {
+    id: 3,
+    name: 'Qovun',
+    value: 'melon',
+  },
 ]

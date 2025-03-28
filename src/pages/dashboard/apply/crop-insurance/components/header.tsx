@@ -1,11 +1,9 @@
-import { CustomRadioGroup } from '@/components/radio'
 import { Button, Stack } from '@mui/material'
-import { filter } from '../constants'
-import { useNavigate } from 'react-router-dom'
-import { ROUTER } from '@/constants/router'
+import { CropsList } from './list-of-crops'
+import { useState } from 'react'
 
 export const Header = () => {
-  const navigate = useNavigate()
+  const [open, setOpen] = useState(false)
 
   return (
     <Stack
@@ -20,11 +18,12 @@ export const Header = () => {
       <Button
         sx={{ maxWidth: 150, backgroundColor: '#08705F', height: 32, borderRadius: '4px' }}
         onClick={() => {
-          navigate(ROUTER.CREATE)
+          setOpen(true)
         }}
       >
         Ariza yaratish
       </Button>
+      <CropsList open={open} setOpen={setOpen} />
     </Stack>
   )
 }

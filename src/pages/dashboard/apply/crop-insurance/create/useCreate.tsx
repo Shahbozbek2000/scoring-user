@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 interface CropInsurance {
   date: string
@@ -45,9 +45,12 @@ interface CropInsurance {
 }
 
 export const useCreate = () => {
+  const location = useLocation()
+  const crop = location.state.crop
   const form = useForm()
   useRegions()
   const navigate = useNavigate()
+
   const queryClient = useQueryClient()
   const { mutate, isLoading } = useMutation({
     mutationFn: async payload => await createApplications(payload),
@@ -61,7 +64,6 @@ export const useCreate = () => {
     },
   })
 
-  console.log(form.watch('date'), 'date')
   const onCreate: SubmitHandler<CropInsurance | any> = data => {
     const {
       crop_actual_harvest,

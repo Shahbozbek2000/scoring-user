@@ -16,11 +16,4 @@ export const pages = [
     link: 'crop-insurance',
     disabled: false,
   },
-  {
-    id: 3,
-    name: "Ekinlar ro'yxati",
-    Icon: IconContracts,
-    link: 'crop-insurance',
-    disabled: true,
-  },
 ]
