@@ -1,8 +1,9 @@
 import { CustomModal } from '@/components/modal'
-import { cropList } from '../../constants'
 import { Card, FlexContainer } from './style'
 import { useNavigate } from 'react-router-dom'
 import { ROUTER } from '@/constants/router'
+import { useQuery } from '@tanstack/react-query'
+import { request } from '@/configs/requests'
 
 interface CropsListProps {
   open: boolean
@@ -12,18 +13,31 @@ interface CropsListProps {
 export const CropsList = ({ open, setOpen }: CropsListProps) => {
   const navigate = useNavigate()
 
+  const { data: cropTypes = [] } = useQuery({
+    queryKey: ['get-api-config'],
+    queryFn: async () => await request('config/'),
+    select: res => {
+      return res.data?.crop_prices
+    },
+  })
+
   return (
     <CustomModal title="Ekinlar ro'yxati" open={open} setOpen={setOpen} maxWidth='xs'>
       <FlexContainer>
-        {cropList.map(crop => (
+        {cropTypes?.map((crop: any, idx: number) => (
           <Card
-            key={crop.id}
+            key={idx}
             onClick={() => {
-              navigate(ROUTER.CREATE, { state: { crop: crop.value } })
+              navigate(ROUTER.CREATE, { state: { crop: crop?.crop_type } })
               setOpen(false)
             }}
           >
-            <h4>{crop.name}</h4>
+            <h4>
+              <span>Ekin turi:</span> {crop?.crop_name}
+            </h4>
+            <p>
+              <span>Narxi:</span> {crop?.price} so'm
+            </p>
           </Card>
         ))}
       </FlexContainer>
