@@ -51,6 +51,8 @@ export const useCreate = () => {
   useRegions()
   const navigate = useNavigate()
 
+  console.log(crop, 'crop')
+
   const queryClient = useQueryClient()
   const { mutate, isLoading } = useMutation({
     mutationFn: async payload => await createApplications(payload),
@@ -102,5 +104,5 @@ export const useCreate = () => {
     })
     console.log(data)
   }
-  return { form, isLoading, onCreate }
+  return { form, crop, isLoading, onCreate }
 }

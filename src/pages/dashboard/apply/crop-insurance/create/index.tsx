@@ -20,7 +20,7 @@ import { insurancePrice } from '../constants'
 const CreateCropInsurance = () => {
   const regions = useRegions()
   const [isCanceled, setIsCanceled] = useState(false)
-  const { form, isLoading, onCreate } = useCreate()
+  const { form, crop, isLoading, onCreate } = useCreate()
 
   const { data: provinces = [] } = useQuery({
     queryKey: ['get-provinces', form.watch('region_code')],
@@ -71,6 +71,7 @@ const CreateCropInsurance = () => {
     },
     onSuccess: res => {
       form.reset({
+        crop_name: crop,
         company_name: res?.company_name,
         pin: res?.stir || res?.pin,
         phone_number: res?.phone_number,

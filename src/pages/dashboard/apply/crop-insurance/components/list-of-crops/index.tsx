@@ -22,22 +22,20 @@ export const CropsList = ({ open, setOpen }: CropsListProps) => {
   })
 
   return (
-    <CustomModal title="Ekinlar ro'yxati" open={open} setOpen={setOpen} maxWidth='xs'>
+    <CustomModal title='Ekin turini tanlang' open={open} setOpen={setOpen} maxWidth='xs'>
       <FlexContainer>
         {cropTypes?.map((crop: any, idx: number) => (
           <Card
             key={idx}
             onClick={() => {
-              navigate(ROUTER.CREATE, { state: { crop: crop?.crop_type } })
+              navigate(ROUTER.CREATE, { state: { crop: crop?.crop_name } })
               setOpen(false)
             }}
           >
-            <h4>
-              <span>Ekin turi:</span> {crop?.crop_name}
-            </h4>
-            <p>
+            <h4>{crop?.crop_name}</h4>
+            {/* <p>
               <span>Narxi:</span> {crop?.price} so'm
-            </p>
+            </p> */}
           </Card>
         ))}
       </FlexContainer>

@@ -1,6 +1,6 @@
 import { Button, Stack } from '@mui/material'
-import { CropsList } from './list-of-crops'
 import { useState } from 'react'
+import { CropsList } from '../list-of-crops'
 
 export const Header = () => {
   const [open, setOpen] = useState(false)
