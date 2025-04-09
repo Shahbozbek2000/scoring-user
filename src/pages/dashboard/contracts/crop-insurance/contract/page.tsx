@@ -1,20 +1,32 @@
-import { Button, Grid, Stack } from '@mui/material'
+import { Button, Grid, Stack, Typography } from '@mui/material'
 import { PaperWrapper } from './style'
-import { Form } from 'react-router-dom'
 import DocViewer, { DocViewerRenderers } from '@cyntler/react-doc-viewer'
 import { LoadingOverlay } from '@/components/loading-overlay'
 import { TextArea } from '@/components/inputs/input-textarea'
 import { usePage } from './usePage'
-import BreadcrumpCustom from '@/components/breadcrup'
+import { useNavigate } from 'react-router-dom'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 
 const CreateContractCropInsurance = () => {
+  const navigate = useNavigate()
   const { form, onCreate, onReject, isLoading, isCanceled, setIsCanceled, memoizedDocs } = usePage()
   const object = new URLSearchParams(document.location.search)
   const socialParams = Object.fromEntries(object.entries())
 
   return (
-    <Stack>
-      <BreadcrumpCustom />
+    <Stack gap='16px'>
+      <Stack
+        direction='row'
+        alignItems='center'
+        gap='8px'
+        sx={{ cursor: 'pointer' }}
+        onClick={() => {
+          navigate(-1)
+        }}
+      >
+        <ChevronLeftIcon />
+        <Typography fontFamily='GothamProMedium'>Ortga qaytish</Typography>
+      </Stack>
       <Stack
         width='100%'
         borderRadius='16px'
