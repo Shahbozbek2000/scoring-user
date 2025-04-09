@@ -5,10 +5,13 @@ export const PaperWrapper = styled('div')`
   background-color: var(--Gray-1);
   border-radius: 12px;
   min-height: 848px;
+  iframe {
+    height: 750px !important;
+  }
 `
 export const Paper = styled('div')`
   width: 100%;
-  height: 297mm;
+  height: 297mm !important;
   background-color: var(--main-white);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `

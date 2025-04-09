@@ -8,11 +8,9 @@ import { usePage } from './usePage'
 import BreadcrumpCustom from '@/components/breadcrup'
 
 const CreateContractCropInsurance = () => {
-  const { docs, form, onCreate, onReject, isLoading, isCanceled, setIsCanceled } = usePage()
+  const { form, onCreate, onReject, isLoading, isCanceled, setIsCanceled, memoizedDocs } = usePage()
   const object = new URLSearchParams(document.location.search)
   const socialParams = Object.fromEntries(object.entries())
-
-  console.log(socialParams, 'socialparams')
 
   return (
     <Stack>
@@ -25,12 +23,12 @@ const CreateContractCropInsurance = () => {
         gap='24px'
         bgcolor={theme => theme.palette.allColors.WHITE}
       >
-        <Form onSubmit={form.handleSubmit(onReject)}>
+        <form onSubmit={form.handleSubmit(onReject)}>
           <Grid container>
             <Grid item xs={12} sm={12} md={12}>
               <PaperWrapper>
                 <DocViewer
-                  documents={docs}
+                  documents={memoizedDocs}
                   pluginRenderers={DocViewerRenderers}
                   style={{ height: 750 }}
                   config={{
@@ -64,7 +62,7 @@ const CreateContractCropInsurance = () => {
               justifyContent='flex-start'
               gap='16px'
             >
-              <a href={docs?.[0]?.uri} download={true} target='_blank' rel='noreferrer'>
+              <a href={memoizedDocs?.[0]?.uri} download={true} target='_blank' rel='noreferrer'>
                 <Button
                   variant='outlined'
                   sx={{ color: '#08705F', border: '1px solid #08705F !important' }}
@@ -112,7 +110,7 @@ const CreateContractCropInsurance = () => {
               </Button>
             </Stack>
           )}
-        </Form>
+        </form>
         <LoadingOverlay isLoading={isLoading} />
       </Stack>
     </Stack>

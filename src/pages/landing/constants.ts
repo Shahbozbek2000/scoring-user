@@ -20,4 +20,12 @@ export const pages = [
     show: true,
   },
   { id: 3, name: 'Arizalar', Icon: IconApply, link: 'main/apply', disabled: false, show: true },
+  {
+    id: 4,
+    name: 'Shartnomalar',
+    Icon: IconApply,
+    link: 'main/contracts',
+    disabled: false,
+    show: true,
+  },
 ]

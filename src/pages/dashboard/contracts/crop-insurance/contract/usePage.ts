@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { acceptOrRejectContract, contractGenerateDoc } from '@/apis/contracts'
 import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
@@ -79,13 +79,17 @@ export const usePage = () => {
     rejectMutate(payload)
   }
 
+  const memoizedDocs = useMemo(() => {
+    return docs
+  }, [docs])
+
   return {
-    docs,
     form,
     onCreate,
     onReject,
     isLoading,
     isCanceled,
     setIsCanceled,
+    memoizedDocs,
   }
 }
