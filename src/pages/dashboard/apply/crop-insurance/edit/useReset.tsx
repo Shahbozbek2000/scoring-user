@@ -3,6 +3,7 @@ import { DATE_FORMAT } from '@/constants/format'
 import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
+import { useFieldArray } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
 
 interface IReset {
@@ -11,8 +12,12 @@ interface IReset {
 
 export const useReset = ({ form }: IReset) => {
   const { id } = useParams()
+  const { fields } = useFieldArray({
+    control: form.control,
+    name: 'credit_area_contour_numbers',
+  })
 
-  return useQuery({
+  const { isLoading, isFetching } = useQuery({
     queryKey: [REACT_QUERY_KEYS.GET_BY_ID_APPLICATIONS, id],
     queryFn: async () => await getByIDApplications(id),
     select: res => {
@@ -21,7 +26,7 @@ export const useReset = ({ form }: IReset) => {
     onSuccess: response => {
       form.reset({
         date: dayjs(response?.date).format(DATE_FORMAT),
-        credit_area_contour_numbers: response?.credit_area_contour_numbers?.map(Number)?.join(','),
+        credit_area_contour_numbers: response?.credit_area_contour_numbers,
         crop_harvest_start: dayjs(response?.crop_harvest_start).format(DATE_FORMAT),
         crop_harvest_end: dayjs(response?.crop_harvest_end).format(DATE_FORMAT),
         risk_factors_climatic: response?.risk_factors_climatic,
@@ -33,4 +38,10 @@ export const useReset = ({ form }: IReset) => {
     },
     enabled: id !== null,
   })
+
+  return {
+    fields,
+    isLoading,
+    isFetching,
+  }
 }

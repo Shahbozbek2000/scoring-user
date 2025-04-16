@@ -1,11 +1,13 @@
 import { createApplications } from '@/apis/applications'
 import { REACT_QUERY_KEYS } from '@/constants/react-query-keys'
 import { useRegions } from '@/hooks/useRegions'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import dayjs from 'dayjs'
-import { type SubmitHandler, useForm } from 'react-hook-form'
+import { type SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { cropInsuranceSchema } from './form.schema'
 
 interface CropInsurance {
   date: string
@@ -45,13 +47,20 @@ interface CropInsurance {
 }
 
 export const useCreate = () => {
+  const navigate = useNavigate()
   const location = useLocation()
   const crop = location.state.crop
-  const form = useForm()
+  const form = useForm<any>({
+    defaultValues: {
+      credit_area_contour_numbers: [{ cad_num: '' }],
+    },
+    resolver: yupResolver(cropInsuranceSchema),
+  })
   useRegions()
-  const navigate = useNavigate()
-
-  console.log(crop, 'crop')
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: 'credit_area_contour_numbers',
+  })
 
   const queryClient = useQueryClient()
   const { mutate, isLoading } = useMutation({
@@ -102,7 +111,14 @@ export const useCreate = () => {
       crop_harvest_end: new Date(crop_harvest_end).toISOString(),
       ...rest,
     })
-    console.log(data)
   }
-  return { form, crop, isLoading, onCreate }
+  return {
+    form,
+    crop,
+    fields,
+    append,
+    remove,
+    isLoading,
+    onCreate,
+  }
 }

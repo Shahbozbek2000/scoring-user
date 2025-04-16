@@ -13,6 +13,7 @@ export const InputMask = <T extends FieldValues>({
   showMask,
   placeholderChar,
   keepCharPositions,
+  inputRef,
   ...rest
 }: InputMaskProps<T>) => {
   const {
@@ -25,20 +26,28 @@ export const InputMask = <T extends FieldValues>({
 
   return (
     <MaskedInput
-      {...field}
-      pipe={pipe}
       mask={mask}
+      pipe={pipe}
       guide={guide}
       showMask={showMask}
       placeholderChar={placeholderChar}
       keepCharPositions={keepCharPositions}
-      render={(ref, props) => {
+      value={field.value || ''}
+      onChange={e => {
+        field.onChange(e.target.value)
+      }} // Update react-hook-form state
+      onBlur={field.onBlur}
+      render={(maskedRef, props) => {
         return (
           <TextField
             {...rest}
             {...props}
             error={invalid}
-            inputRef={props.inputRef ?? ref}
+            inputRef={el => {
+              maskedRef(el)
+              field.ref(el)
+              if (inputRef) inputRef(el)
+            }}
             variant='outlined'
             autoComplete='off'
             size='small'

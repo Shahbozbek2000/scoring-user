@@ -4,7 +4,7 @@ import { usePage } from './usePage'
 import { Filter } from '@/components/filter'
 import { CustomPagination } from '@/components/pagination'
 import { LoadingOverlay } from '@/components/loading-overlay'
-import BreadcrumpCustom from '@/components/breadcrup'
+import BreadcrumpCustom from '@/components/breadcrump'
 
 const CoverageInsurance = () => {
   const { data, count, params, columns, setParams, isLoading, isFetching } = usePage()

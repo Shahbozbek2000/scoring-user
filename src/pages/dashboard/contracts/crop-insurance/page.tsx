@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import { usePage } from './usePage'
 import { CustomPagination } from '@/components/pagination'
 import { LoadingOverlay } from '@/components/loading-overlay'
-import BreadcrumpCustom from '@/components/breadcrup'
+import BreadcrumpCustom from '@/components/breadcrump'
 
 const ContractCropInsurance = () => {
   const { data, count, params, columns, setParams, isLoading, isFetching } = usePage()

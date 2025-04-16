@@ -2,7 +2,7 @@ import { Grid, Stack, Typography } from '@mui/material'
 import { pages } from './constants'
 import { Card, Left, Right } from './style'
 import { useNavigate } from 'react-router-dom'
-import BreadcrumpCustom from '@/components/breadcrup'
+import BreadcrumpCustom from '@/components/breadcrump'
 
 const Home = () => {
   const navigate = useNavigate()

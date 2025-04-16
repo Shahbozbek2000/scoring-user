@@ -1,4 +1,4 @@
-import BreadcrumpCustom from '@/components/breadcrup'
+import BreadcrumpCustom from '@/components/breadcrump'
 import { Input } from '@/components/inputs/input'
 import { InputPhone } from '@/components/inputs/input-phone'
 import { Button, Grid, Stack, Typography } from '@mui/material'

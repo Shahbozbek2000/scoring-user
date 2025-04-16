@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import { Header } from './components/header'
 import { usePage } from './usePage'
 import { CustomPagination } from '@/components/pagination'
-import BreadcrumpCustom from '@/components/breadcrup'
+import BreadcrumpCustom from '@/components/breadcrump'
 
 const CropInsurance = () => {
   const { data, params, columns, setParams } = usePage()

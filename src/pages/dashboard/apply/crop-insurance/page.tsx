@@ -2,7 +2,7 @@ import { CustomTable } from '@/components/table'
 import { Stack } from '@mui/material'
 import { usePage } from './usePage'
 import { CustomPagination } from '@/components/pagination'
-import BreadcrumpCustom from '@/components/breadcrup'
+import BreadcrumpCustom from '@/components/breadcrump'
 import { Header } from './components/header'
 
 const CropInsurance = () => {

@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
+// @ts-nocheck
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { Input } from '@/components/inputs/input'
 import { InputCheckbox } from '@/components/inputs/input-checkbox'
 import { TextArea } from '@/components/inputs/input-textarea'
 import { COLORS } from '@/constants/css'
-import { Button, Grid, Stack, Typography } from '@mui/material'
+import { Button, Grid, IconButton, Stack, Typography } from '@mui/material'
 import { LoadingOverlay } from '@/components/loading-overlay'
 import { Form } from 'react-router-dom'
 import { useCreate } from './useCreate'
-import BreadcrumpCustom from '@/components/breadcrup'
+import BreadcrumpCustom from '@/components/breadcrump'
 import { InputDate } from '@/components/inputs/datepicker'
 import { CustomSelect } from '@/components/select'
 import { useRegions } from '@/hooks/useRegions'
@@ -16,11 +17,15 @@ import { useQuery } from '@tanstack/react-query'
 import { request } from '@/configs/requests'
 import dayjs from 'dayjs'
 import { insurancePrice } from '../constants'
+import { InputMask } from '@/components/inputs/input-mask'
+import AddIcon from '@mui/icons-material/Add'
+import DeleteIcon from '@mui/icons-material/Delete'
+import { FieldWrapper } from './style'
 
 const CreateCropInsurance = () => {
   const regions = useRegions()
   const [isCanceled, setIsCanceled] = useState(false)
-  const { form, crop, isLoading, onCreate } = useCreate()
+  const { form, crop, fields, append, remove, isLoading, onCreate } = useCreate()
 
   const { data: provinces = [] } = useQuery({
     queryKey: ['get-provinces', form.watch('region_code')],
@@ -87,7 +92,17 @@ const CreateCropInsurance = () => {
     },
   })
 
-  console.log(massiveList, 'massiveList')
+  const inputRefs = useRef<Array<HTMLInputElement | null>>([])
+
+  useEffect(() => {
+    if (fields.length > 0) {
+      const lastIndex = fields.length - 1
+      inputRefs.current[lastIndex]?.focus()
+    }
+  }, [fields.length])
+
+  console.log(fields)
+
   return (
     <Stack>
       <BreadcrumpCustom />
@@ -269,13 +284,64 @@ const CreateCropInsurance = () => {
                   options={massiveList}
                 />
               </Grid>
-              <Grid item xs={6} sm={4} md={4}>
-                <Input
-                  control={form.control}
-                  name='credit_area_contour_numbers'
-                  placeholder='Kontur raqamlari'
-                  label='Kontur raqamlari'
-                />
+              <Grid
+                item
+                xs={6}
+                sm={6}
+                md={6}
+                style={{ display: 'flex', flexDirection: 'column', gap: 10 }}
+              >
+                {fields.map((item, index) => {
+                  return (
+                    <FieldWrapper key={item.id}>
+                      <InputMask
+                        key={item.id}
+                        control={form.control}
+                        name={`credit_area_contour_numbers.${index}.cad_num`}
+                        placeholder='Kontur raqamlari'
+                        label='Kontur raqamlari'
+                        inputRef={el => (inputRefs.current[index] = el)}
+                        mask={[
+                          /\d/,
+                          /\d/,
+                          ':',
+                          /\d/,
+                          /\d/,
+                          ':',
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                          /\d/,
+                        ]}
+                      />
+                      {index === fields.length - 1 ? (
+                        <IconButton
+                          type='button'
+                          onClick={() => {
+                            append({ cad_num: '' })
+                          }}
+                          className='plus-btn'
+                        >
+                          <AddIcon />
+                        </IconButton>
+                      ) : (
+                        <IconButton
+                          type='button'
+                          onClick={() => {
+                            remove(index)
+                          }}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      )}
+                    </FieldWrapper>
+                  )
+                })}
               </Grid>
             </Grid>
             <Typography

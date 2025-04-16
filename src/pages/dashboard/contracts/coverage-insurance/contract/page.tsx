@@ -5,7 +5,7 @@ import DocViewer, { DocViewerRenderers } from '@cyntler/react-doc-viewer'
 import { LoadingOverlay } from '@/components/loading-overlay'
 import { TextArea } from '@/components/inputs/input-textarea'
 import { usePage } from './usePage'
-import BreadcrumpCustom from '@/components/breadcrup'
+import BreadcrumpCustom from '@/components/breadcrump'
 
 const CreateCoverageInsurance = () => {
   const { docs, form, onCreate, onReject, isLoading, isCanceled, setIsCanceled } = usePage()
