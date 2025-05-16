@@ -25,7 +25,7 @@ interface CropInsurance {
   farmer_address: string
   creditor_name: string
   creditor_stir: string
-  creditor_requisites: string
+  creditor_mfo: string
   creditor_address: string
   crop_name: string
   crop_area: number
@@ -54,6 +54,7 @@ export const useCreate = () => {
     defaultValues: {
       credit_area_contour_numbers: [{ cad_num: '' }],
     },
+    mode: 'onChange',
     resolver: yupResolver(cropInsuranceSchema),
   })
   useRegions()
@@ -104,7 +105,6 @@ export const useCreate = () => {
       credit_area_region_code: String(credit_area_region_code),
       credit_area_district_code: String(credit_area_district_code),
       credit_area_massiv_code: String(credit_area_massiv_code),
-      // insurance_amount: Number(insurance_amount),
       insurance_price: Number(insurance_price),
       type_code: 1,
       crop_harvest_start: new Date(crop_harvest_start).toISOString(),

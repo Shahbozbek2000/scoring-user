@@ -1,7 +1,5 @@
-// @ts-nocheck
 import * as Yup from 'yup'
 
-// Validation schema for CropInsurance form
 export const cropInsuranceSchema = Yup.object().shape({
   credit_area_contour_numbers: Yup.array()
     .of(
@@ -15,4 +13,10 @@ export const cropInsuranceSchema = Yup.object().shape({
       }),
     )
     .min(1, 'Kamida bitta kontur raqami kiritilishi shart'),
+  creditor_stir: Yup.string()
+    .required('Ushbu maydon to`ldirilishi shart')
+    .matches(/^\d{9}$/, 'STIR faqat 9 ta raqamdan iborat bo‘lishi kerak'),
+  creditor_mfo: Yup.string()
+    .required('Ushbu maydon to`ldirilishi shart')
+    .matches(/^\d{5}$/, 'MFO faqat 5 ta raqamdan iborat bo‘lishi kerak'),
 })

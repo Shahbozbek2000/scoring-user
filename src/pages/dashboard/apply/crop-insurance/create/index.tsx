@@ -230,12 +230,7 @@ const CreateCropInsurance = () => {
                 />
               </Grid>
               <Grid item xs={6} sm={4} md={4}>
-                <Input
-                  control={form.control}
-                  name='creditor_requisites'
-                  placeholder='Bank rekvizitlari'
-                  label='Bank rekvizitlari'
-                />
+                <Input control={form.control} name='creditor_mfo' placeholder='MFO' label='MFO' />
               </Grid>
               <Grid item xs={6} sm={4} md={4}>
                 <Input
